@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>supp</class>
+ <widget class="QDialog" name="supp">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>524</width>
+    <height>379</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>121</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+    background-color: white;
+    border: 2px solid #cccccc;
+    border-radius: 6px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #3498db; /* Bleu moderne au focus */
+}
+
+/* Style des DateEdit */
+QDateEdit {
+    background-color: white;
+    border: 2px solid #cccccc;
+    border-radius: 6px;
+    padding: 3px;
+    font-size: 14px;
+}
+
+QDateEdit::drop-down {
+    border: none;
+}
+</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>110</y>
+     <width>131</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* Style du formulaire */
+QWidget {
+    background-color: #f4f4f4; /* Fond gris clair moderne */
+}
+
+/* Style des champs de saisie (ID, Formateur, Lieu, etc.) */
+QLineEdit {
+    background-color: white;
+    border: 2px solid #cccccc;
+    border-radius: 6px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #3498db; /* Bleu moderne au focus */
+}
+
+/* Style des DateEdit */
+QDateEdit {
+    background-color: white;
+    border: 2px solid #cccccc;
+    border-radius: 6px;
+    padding: 3px;
+    font-size: 14px;
+}
+
+QDateEdit::drop-down {
+    border: none;
+}
+
+/* Style du QSlider (Prix) */
+QSlider::groove:horizontal {
+    background: #ddd;
+    height: 6px;
+    border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+    background: #3498db;
+    width: 14px;
+    height: 14px;
+    border-radius: 7px;
+    margin: -4px 0;
+}
+
+/* Style des labels */
+QLabel {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2c3e50; /* Gris foncé pour un effet pro */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Supprimer Par ID : </string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>230</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pushButton {
+   background-color: rgb(21, 118, 127);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #219150;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;QPushButton {
+    background-color: #27ae60; /* Vert moderne */
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #219150;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Effet au survol */
+QPushButton:hover {
+    background-color: #219150;
+    border: 2px solid #1e8449;
+}
+
+/* Effet au clic */
+QPushButton:pressed {
+    background-color: #1e8449;
+    border: 2px solid #166735;
+}
+
+}
+
+/* Effet au survol */
+#pushButton:hover {
+    background-color: #219150; /* Vert plus foncé */
+    border: 2px solid #1e8449;
+}
+
+/* Effet au clic */
+#pushButton:pressed {
+    background-color: #1e8449; /* Vert encore plus foncé */
+    border: 2px solid #166735;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Supprimer</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>230</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pushButton_2 {
+   background-color: rgb(21, 118, 127);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #219150;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;QPushButton {
+    background-color: #27ae60; /* Vert moderne */
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #219150;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Effet au survol */
+QPushButton:hover {
+    background-color: #219150;
+    border: 2px solid #1e8449;
+}
+
+/* Effet au clic */
+QPushButton:pressed {
+    background-color: #1e8449;
+    border: 2px solid #166735;
+}
+
+}
+
+/* Effet au survol */
+#pushButton_2:hover {
+    background-color: #219150; /* Vert plus foncé */
+    border: 2px solid #1e8449;
+}
+
+/* Effet au clic */
+#pushButton_2:pressed {
+    background-color: #1e8449; /* Vert encore plus foncé */
+    border: 2px solid #166735;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Annulé</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>531</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(21, 118, 127);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>10</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/res/98.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>330</y>
+     <width>531</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(21, 118, 127);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

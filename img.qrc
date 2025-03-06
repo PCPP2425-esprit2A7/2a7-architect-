@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>img.qrc</file>
+        <file>98.png</file>
+        <file>10.jpeg</file>
+        <file>99.png</file>
+        <file>100.jpg</file>
+        <file>101.png</file>
+        <file>12214354.png</file>
+        <file>22.png</file>
+        <file>33.png</file>
+        <file>2942499.png</file>
+        <file>7891470.png</file>
+        <file>16854774.png</file>
+        <file>66.png</file>
+        <file>222.png</file>
+        <file>5128.png_1200.png</file>
+        <file>666.png</file>
+        <file>images.png</file>
+        <file>8.png</file>
+        <file>3309927.png</file>
+        <file>2481936.png</file>
+        <file>989.png</file>
+        <file>777.png</file>
+        <file>55.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>777.png</file>
+    </qresource>
+</RCC>
