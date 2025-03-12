@@ -6,363 +6,562 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1279</width>
-    <height>811</height>
+    <width>1239</width>
+    <height>765</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true"/>
-  </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListView" name="listView">
+   <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1281</width>
-      <height>141</height>
+      <width>1241</width>
+      <height>181</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(21, 118, 127);</string>
     </property>
+    <widget class="QPushButton" name="pushButton_stat">
+     <property name="geometry">
+      <rect>
+       <x>650</x>
+       <y>40</y>
+       <width>93</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/img/d9515eb6-0b18-4234-8bfb-3d9f93867372-removebg-preview.png);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_pdf">
+     <property name="geometry">
+      <rect>
+       <x>870</x>
+       <y>40</y>
+       <width>81</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/img/f55703f4-fe07-4981-9fbf-901c974bc61e-removebg-preview.png);
+background-color: rgb(21, 118, 127);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_15">
+     <property name="geometry">
+      <rect>
+       <x>660</x>
+       <y>140</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Statistique</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_16">
+     <property name="geometry">
+      <rect>
+       <x>890</x>
+       <y>140</y>
+       <width>63</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
+     </property>
+     <property name="text">
+      <string>PDF</string>
+     </property>
+    </widget>
    </widget>
-   <widget class="QListView" name="listView_2">
+   <widget class="QWidget" name="widget_2" native="true">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>140</y>
-      <width>256</width>
-      <height>651</height>
+      <x>-1</x>
+      <y>-1</y>
+      <width>241</width>
+      <height>761</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(21, 118, 127);</string>
     </property>
+    <widget class="QPushButton" name="pushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>600</y>
+       <width>161</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 221);
+font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
+     </property>
+     <property name="text">
+      <string>                     Projets</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_6">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>490</y>
+       <width>161</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 221);
+font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
+     </property>
+     <property name="text">
+      <string>                      Formations</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_7">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>390</y>
+       <width>161</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 221);
+font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
+     </property>
+     <property name="text">
+      <string>                            Taches</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_8">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>280</y>
+       <width>161</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 221);
+font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
+     </property>
+     <property name="text">
+      <string>              Clients</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_9">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>180</y>
+       <width>161</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 221);
+font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
+     </property>
+     <property name="text">
+      <string>                    Dashboard</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>200</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/img/30450e23-1585-4026-bf26-7879437b7ae7-removebg-preview.png);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>290</y>
+       <width>61</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/img/53b42616-509a-420c-af93-8ec49e011018-removebg-preview.png);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_12">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>400</y>
+       <width>71</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image :url(:/img/926054e0-28c6-4ced-9854-3ef5fdbd652a-removebg-preview.png);
+background-color: rgb(255, 255, 255);
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_13">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>610</y>
+       <width>61</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image :url(:/img/338f0f59-de2e-4b18-ba36-958153a5cd68-removebg-preview.png);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>500</y>
+       <width>61</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image:url(:/img/3b48b488-886a-4a2f-911a-83bde255a6ce-removebg-preview.png);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_17">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>70</y>
+       <width>63</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
-   <widget class="QPushButton" name="Projets">
+   <widget class="QWidget" name="widget_3" native="true">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>630</y>
-      <width>181</width>
-      <height>101</height>
+      <x>280</x>
+      <y>240</y>
+      <width>391</width>
+      <height>471</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 900 italic 9pt &quot;Segoe UI&quot;;
-background-color: rgb(255, 245, 221);</string>
+     <string notr="true">background-color: rgb(255, 255, 221);</string>
     </property>
-    <property name="text">
-     <string>Projets</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Formations">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>500</y>
-      <width>181</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 900 italic 9pt &quot;Segoe UI&quot;;
-background-color: rgb(255, 245, 221);</string>
-    </property>
-    <property name="text">
-     <string>      Formations</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Taches">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>380</y>
-      <width>181</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 900 italic 9pt &quot;Segoe UI&quot;;
-background-color: rgb(255, 245, 221);</string>
-    </property>
-    <property name="text">
-     <string>Taches</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Clients">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>260</y>
-      <width>181</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 900 italic 9pt &quot;Segoe UI&quot;;
-background-color: rgb(255, 245, 221);</string>
-    </property>
-    <property name="text">
-     <string>Clients</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Dashboard">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>150</y>
-      <width>181</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 245, 221);
-font: 900 italic 9pt &quot;Segoe UI&quot;;</string>
-    </property>
-    <property name="text">
-     <string>  Dashboard</string>
-    </property>
-   </widget>
-   <widget class="QListView" name="listView_3">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>220</y>
-      <width>351</width>
-      <height>511</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 245, 221);</string>
-    </property>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
+     </property>
+     <property name="text">
+      <string>id projet:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit1">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>30</y>
+       <width>113</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>90</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
+     </property>
+     <property name="text">
+      <string>nom projet:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_2">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>90</y>
+       <width>113</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>130</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Description :</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="desc">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>130</y>
+       <width>151</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>250</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
+     </property>
+     <property name="text">
+      <string>status :</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>300</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Date début :</string>
+     </property>
+    </widget>
+    <widget class="QDateEdit" name="dateEdit">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>300</y>
+       <width>131</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255)</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>420</y>
+       <width>93</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;
+background-color: rgb(255, 255, 255)</string>
+     </property>
+     <property name="text">
+      <string>Ajouter</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>420</y>
+       <width>93</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;
+background-color: rgb(255, 255, 255)</string>
+     </property>
+     <property name="text">
+      <string>Annuler</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>340</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Date fin :</string>
+     </property>
+    </widget>
+    <widget class="QDateEdit" name="dateEdit_2">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>340</y>
+       <width>121</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255)</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="combo">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>250</y>
+       <width>141</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255)</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>terminé</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>en cours</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>suspendu</string>
+      </property>
+     </item>
+    </widget>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>270</y>
-      <width>71</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>id projet :</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>330</y>
-      <width>81</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>nom projet :</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>560</y>
-      <width>91</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Date debut :</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>500</y>
-      <width>91</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Status :</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>390</y>
-      <width>91</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Description :</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>270</y>
-      <width>113</width>
-      <height>26</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>330</y>
-      <width>113</width>
-      <height>26</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QDateEdit" name="dateEdit">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>550</y>
-      <width>110</width>
-      <height>26</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBox">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>500</y>
-      <width>76</width>
-      <height>26</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="plainTextEdit">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>380</y>
-      <width>171</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="plainText">
-     <string>c'est la description du projet</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>680</y>
-      <width>93</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Ajouter</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>680</y>
-      <width>93</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Annuler</string>
-    </property>
-   </widget>
-   <widget class="QListView" name="listView_4">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>260</y>
-      <width>561</width>
-      <height>391</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>160</y>
-      <width>131</width>
+      <x>370</x>
+      <y>189</y>
+      <width>151</width>
       <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 900 italic 9pt &quot;Segoe UI&quot;;</string>
+     <string notr="true">font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
     </property>
     <property name="text">
-     <string>Ajouter Projet</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_9">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>160</y>
-      <width>131</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 900 italic 9pt &quot;Segoe UI&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Modifier Projet</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_10">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>160</y>
-      <width>131</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 900 italic 9pt &quot;Segoe UI&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Supprimer Projet</string>
+     <string>Ajouter un projet</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>700</x>
+      <x>710</x>
       <y>220</y>
       <width>151</width>
       <height>20</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
+    </property>
     <property name="text">
-     <string>Rechercher par Nom :</string>
+     <string>Rechercher par nom : </string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QLineEdit" name="lineEdit_rechercher">
     <property name="geometry">
      <rect>
-      <x>850</x>
+      <x>860</x>
       <y>220</y>
       <width>113</width>
       <height>26</height>
@@ -372,228 +571,69 @@ font: 900 italic 9pt &quot;Segoe UI&quot;;</string>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>1010</x>
+      <x>990</x>
       <y>220</y>
-      <width>71</width>
+      <width>81</width>
       <height>20</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
+    </property>
     <property name="text">
-     <string>Trier par :</string>
+     <string>Trier selon :</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_2">
+   <widget class="QComboBox" name="comboBox_tri">
     <property name="geometry">
      <rect>
-      <x>1080</x>
+      <x>1070</x>
       <y>220</y>
-      <width>76</width>
+      <width>111</width>
       <height>26</height>
      </rect>
     </property>
-    <item>
-     <property name="text">
-      <string>Nom</string>
-     </property>
-    </item>
    </widget>
-   <widget class="QPushButton" name="pushButton_11">
+   <widget class="QPushButton" name="modifier">
     <property name="geometry">
      <rect>
-      <x>1050</x>
-      <y>660</y>
-      <width>81</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/img/C:/Users/amirs/OneDrive/Bureau/imggg/9.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_9">
-    <property name="geometry">
-     <rect>
-      <x>1170</x>
-      <y>30</y>
-      <width>81</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/img/C:/Users/amirs/OneDrive/Bureau/imggg/2.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_10">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>180</y>
-      <width>61</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/img/C:/Users/amirs/OneDrive/Bureau/imggg/8.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_11">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>290</y>
-      <width>91</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/img/C:/Users/amirs/OneDrive/Bureau/imggg/6.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_12">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>410</y>
-      <width>81</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/img/C:/Users/amirs/OneDrive/Bureau/imggg/1.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_13">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>530</y>
-      <width>91</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/img/C:/Users/amirs/OneDrive/Bureau/imggg/7.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_14">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>660</y>
-      <width>91</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/img/C:/Users/amirs/OneDrive/Bureau/imggg/4.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_15">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>130</y>
-      <width>81</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/img/C:/Users/amirs/OneDrive/Bureau/imggg/3.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_12">
-    <property name="geometry">
-     <rect>
-      <x>790</x>
-      <y>660</y>
+      <x>800</x>
+      <y>670</y>
       <width>93</width>
-      <height>71</height>
+      <height>29</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/img/C:/Users/amirs/OneDrive/Bureau/imggg/5.png);</string>
+     <string notr="true">font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
     </property>
     <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_16">
-    <property name="geometry">
-     <rect>
-      <x>-30</x>
-      <y>-90</y>
-      <width>301</width>
-      <height>321</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/img/C:/Users/amirs/Downloads/WhatsApp_Image_2025-01-29_at_7.59.54_PM-removebg-preview.png);</string>
-    </property>
-    <property name="text">
-     <string/>
+     <string>Modifier</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_13">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>600</y>
-      <width>161</width>
+      <x>960</x>
+      <y>670</y>
+      <width>93</width>
       <height>29</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Générer la date de fin :</string>
-    </property>
-   </widget>
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>590</y>
-      <width>120</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Date fin :</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_14">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>600</y>
-      <width>21</width>
-      <height>29</height>
-     </rect>
+    <property name="styleSheet">
+     <string notr="true">font: 300 italic 9pt &quot;Neue Haas Grotesk Text Pro&quot;;</string>
     </property>
     <property name="text">
-     <string>?</string>
+     <string>Supprimer</string>
+    </property>
+   </widget>
+   <widget class="QTableView" name="tableView">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>271</y>
+      <width>501</width>
+      <height>361</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -602,11 +642,12 @@ font: 900 italic 9pt &quot;Segoe UI&quot;;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1279</width>
+     <width>1239</width>
      <height>26</height>
     </rect>
    </property>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

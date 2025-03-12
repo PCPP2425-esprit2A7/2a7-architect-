@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>3b48b488-886a-4a2f-911a-83bde255a6ce-removebg-preview.png</file>
+        <file>5bdaa5e1-d54b-4c19-840c-0f5b35307425-removebg-preview.png</file>
+        <file>53b42616-509a-420c-af93-8ec49e011018-removebg-preview.png</file>
+        <file>338f0f59-de2e-4b18-ba36-958153a5cd68-removebg-preview.png</file>
+        <file>30450e23-1585-4026-bf26-7879437b7ae7-removebg-preview.png</file>
+        <file>926054e0-28c6-4ced-9854-3ef5fdbd652a-removebg-preview.png</file>
+        <file>d9515eb6-0b18-4234-8bfb-3d9f93867372-removebg-preview.png</file>
+        <file>e9700fcd-ffb2-45a2-96f7-32bb5bfaef90-removebg-preview.png</file>
+        <file>f55703f4-fe07-4981-9fbf-901c974bc61e-removebg-preview.png</file>
+    </qresource>
+</RCC>
