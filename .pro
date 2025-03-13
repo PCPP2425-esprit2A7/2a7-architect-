@@ -2,7 +2,8 @@
 TARGET = 000
 
 # Type de projet (application Qt)
-QT += core gui widgets sql
+QT += core gui widgets sql printsupport
+
 
 # Fichiers sources
 SOURCES += main.cpp \

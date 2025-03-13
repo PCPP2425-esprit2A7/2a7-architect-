@@ -998,7 +998,7 @@ QLabel {
      <string>   Ajouter Une Formation</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnAjouterr">
+   <widget class="QPushButton" name="btnPdf">
     <property name="geometry">
      <rect>
       <x>1160</x>
@@ -1355,8 +1355,8 @@ QPushButton:pressed {
    <widget class="QPushButton" name="btnAjouter_3">
     <property name="geometry">
      <rect>
-      <x>1170</x>
-      <y>580</y>
+      <x>860</x>
+      <y>540</y>
       <width>131</width>
       <height>31</height>
      </rect>
@@ -1415,8 +1415,8 @@ QPushButton:pressed {
    <widget class="QPushButton" name="btnSupprimer">
     <property name="geometry">
      <rect>
-      <x>1340</x>
-      <y>580</y>
+      <x>1320</x>
+      <y>550</y>
       <width>131</width>
       <height>31</height>
      </rect>

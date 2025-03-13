@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="lineEditsupp">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -118,7 +118,7 @@ QLabel {
     <string>Supprimer Par ID : </string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="supprimer">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -178,7 +178,7 @@ QPushButton:pressed {
     <string>Supprimer</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="pushButtonanuul">
    <property name="geometry">
     <rect>
      <x>270</x>
