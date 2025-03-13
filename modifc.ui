@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>modifc</class>
+ <widget class="QDialog" name="modifc">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>897</width>
+    <height>632</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>50</y>
+     <width>311</width>
+     <height>521</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* Style du formulaire */
+QWidget {
+    background-color: #f4f4f4; /* Fond gris clair moderne */
+}
+
+/* Style des champs de saisie (ID, Formateur, Lieu, etc.) */
+QLineEdit {
+    background-color: white;
+    border: 2px solid #cccccc;
+    border-radius: 6px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #3498db; /* Bleu moderne au focus */
+}</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <widget class="QLabel" name="nomClient">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>90</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Nom</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="prenomClient">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>150</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Prénom</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="emailClient">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>220</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Email</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="numClient">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>300</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Num-tel</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="nbcProjet">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>380</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Nb-projet</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="nomClient_2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>120</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+
+
+border-radius: 8px;
+padding: 8px 16px;
+font-size: 12px;
+font-weight: bold;
+</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="prenomClient_2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>180</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+
+
+border-radius: 8px;
+padding: 8px 16px;
+font-size: 12px;
+font-weight: bold;
+</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignJustify|Qt::AlignmentFlag::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="emailClient_2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>255</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+
+
+border-radius: 8px;
+padding: 8px 16px;
+font-size: 12px;
+font-weight: bold;
+</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="numClient_2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>330</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+
+
+border-radius: 8px;
+padding: 8px 16px;
+font-size: 12px;
+font-weight: bold;
+</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="nbcProjet_2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>420</y>
+      <width>160</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Orientation::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>10</y>
+      <width>81</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/res/client.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 350 italic 12pt &quot;Nirmala UI&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Modifier un Clinet</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="IDC">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>50</y>
+      <width>161</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QDialogButtonBox" name="buttonBox">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>460</y>
+      <width>151</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QDialogButtonBox QPushButton {
+    background-color: #4A4A4A; /* Couleur similaire à la bordure du QLineEdit */
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #4A4A4A;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+QDialogButtonBox QPushButton:hover {
+    background-color: #1f618d; /* Même couleur que le focus du QLineEdit */
+    border: 2px solid #1f618d;
+}
+
+QDialogButtonBox QPushButton:pressed {
+    background-color: #154360; /* Légèrement plus foncé pour l'effet pressé */
+    border: 2px solid #154360;
+}
+</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Orientation::Horizontal</enum>
+    </property>
+    <property name="standardButtons">
+     <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>modifc</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>modifc</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

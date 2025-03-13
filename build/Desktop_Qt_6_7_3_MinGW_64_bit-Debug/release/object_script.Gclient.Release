@@ -1,0 +1,10 @@
+release/main.o
+release/clientmanager.o
+release/connexion.o
+release/gclinet.o
+release/modifc.o
+release/supp.o
+release/qrc_img.o
+release/moc_gclinet.o
+release/moc_modifc.o
+release/moc_supp.o

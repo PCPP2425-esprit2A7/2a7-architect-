@@ -1,0 +1,10 @@
+debug/main.o
+debug/clientmanager.o
+debug/connexion.o
+debug/gclinet.o
+debug/modifc.o
+debug/supp.o
+debug/qrc_img.o
+debug/moc_gclinet.o
+debug/moc_modifc.o
+debug/moc_supp.o
