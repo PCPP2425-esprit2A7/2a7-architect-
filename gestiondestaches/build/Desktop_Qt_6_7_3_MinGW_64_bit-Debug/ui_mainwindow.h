@@ -93,10 +93,8 @@ public:
     QLabel *label_33;
     QLabel *label_34;
     QLabel *label_35;
-    QLineEdit *suppline;
     QLineEdit *modline;
-    QLabel *label_36;
-    QLabel *label_37;
+    QLineEdit *suppline;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -164,6 +162,8 @@ public:
 ""));
         comboBox_2 = new QComboBox(centralwidget);
         comboBox_2->addItem(QString());
+        comboBox_2->addItem(QString());
+        comboBox_2->addItem(QString());
         comboBox_2->setObjectName("comboBox_2");
         comboBox_2->setGeometry(QRect(740, 140, 81, 22));
         comboBox_2->setStyleSheet(QString::fromUtf8("border: 2px solid #cccccc;\n"
@@ -192,7 +192,7 @@ public:
 "border-radius: 8px;"));
         btnModifier = new QPushButton(centralwidget);
         btnModifier->setObjectName("btnModifier");
-        btnModifier->setGeometry(QRect(490, 500, 91, 21));
+        btnModifier->setGeometry(QRect(510, 480, 91, 21));
         btnModifier->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 245, 221);\n"
 "font: italic 9pt \"Segoe UI\";\n"
 ""));
@@ -212,7 +212,7 @@ public:
         label_2->setStyleSheet(QString::fromUtf8("image: url(:/images/385542126_680655700570078_413661943973173125_n.png);"));
         btnSupprimer = new QPushButton(centralwidget);
         btnSupprimer->setObjectName("btnSupprimer");
-        btnSupprimer->setGeometry(QRect(660, 500, 91, 21));
+        btnSupprimer->setGeometry(QRect(750, 480, 91, 21));
         btnSupprimer->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 245, 221);\n"
 "font: italic 9pt \"Segoe UI\";\n"
 ""));
@@ -233,7 +233,7 @@ public:
         label_7->setStyleSheet(QString::fromUtf8("image: url(:/images/476777382_1500858751317521_1233079034650026765_n.png);"));
         label_21 = new QLabel(centralwidget);
         label_21->setObjectName("label_21");
-        label_21->setGeometry(QRect(620, 500, 51, 21));
+        label_21->setGeometry(QRect(800, 520, 61, 31));
         label_21->setStyleSheet(QString::fromUtf8("image: url(:/img/07330b37741337ace891d483cc7cb42c-removebg-preview.png);"));
         pushButton_3 = new QPushButton(centralwidget);
         pushButton_3->setObjectName("pushButton_3");
@@ -408,22 +408,12 @@ public:
         label_35->setObjectName("label_35");
         label_35->setGeometry(QRect(800, 10, 61, 41));
         label_35->setStyleSheet(QString::fromUtf8("image: url(:/img/461833517_463946476660446_4629749051515532142_n.png);"));
-        suppline = new QLineEdit(centralwidget);
-        suppline->setObjectName("suppline");
-        suppline->setGeometry(QRect(680, 470, 71, 22));
         modline = new QLineEdit(centralwidget);
         modline->setObjectName("modline");
-        modline->setGeometry(QRect(500, 470, 81, 22));
-        label_36 = new QLabel(centralwidget);
-        label_36->setObjectName("label_36");
-        label_36->setGeometry(QRect(620, 470, 61, 16));
-        label_36->setStyleSheet(QString::fromUtf8("color: rgb(21, 118, 127);\n"
-"font: 600 9pt \"Segoe UI\";"));
-        label_37 = new QLabel(centralwidget);
-        label_37->setObjectName("label_37");
-        label_37->setGeometry(QRect(440, 470, 61, 16));
-        label_37->setStyleSheet(QString::fromUtf8("color: rgb(21, 118, 127);\n"
-"font: 600 9pt \"Segoe UI\";"));
+        modline->setGeometry(QRect(432, 480, 71, 22));
+        suppline = new QLineEdit(centralwidget);
+        suppline->setObjectName("suppline");
+        suppline->setGeometry(QRect(682, 480, 61, 22));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -450,7 +440,9 @@ public:
         btnAjouter->setText(QCoreApplication::translate("MainWindow", "Ajouter", nullptr));
         label_22->setText(QString());
         btnPDF->setText(QCoreApplication::translate("MainWindow", "PDF", nullptr));
-        comboBox_2->setItemText(0, QCoreApplication::translate("MainWindow", "Id Tache", nullptr));
+        comboBox_2->setItemText(0, QCoreApplication::translate("MainWindow", "id", nullptr));
+        comboBox_2->setItemText(1, QCoreApplication::translate("MainWindow", "datedeb", nullptr));
+        comboBox_2->setItemText(2, QCoreApplication::translate("MainWindow", "datefin", nullptr));
 
         label->setText(QString());
         label_13->setText(QCoreApplication::translate("MainWindow", "Id Tache :", nullptr));
@@ -501,8 +493,6 @@ public:
         label_33->setText(QString());
         label_34->setText(QString());
         label_35->setText(QString());
-        label_36->setText(QCoreApplication::translate("MainWindow", "Id Tache :", nullptr));
-        label_37->setText(QCoreApplication::translate("MainWindow", "Id Tache :", nullptr));
     } // retranslateUi
 
 };

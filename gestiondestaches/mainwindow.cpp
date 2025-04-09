@@ -1,45 +1,66 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "connection.h"
+#include "modifydialog.h"
+
 #include <QMessageBox>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlTableModel>
 #include <QDebug>
-#include <QInputDialog>  // <-- Add this line for QInputDialog
 
-// Constructor
+// Constructeur
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow) {
+    , ui(new Ui::MainWindow)
+{
     ui->setupUi(this);
 
-    // Debugging: Check available database drivers
-    qDebug() << "Available drivers:" << QSqlDatabase::drivers();
-
-    // Connect buttons to slots
+    qDebug() << "Drivers disponibles:" << QSqlDatabase::drivers();
+    connect(ui->comboBox_2, &QComboBox::currentTextChanged, this, &MainWindow::trierTaches);
     connect(ui->btnAjouter, &QPushButton::clicked, this, &MainWindow::btnAjouterClicked);
     connect(ui->btnSupprimer, &QPushButton::clicked, this, &MainWindow::btnSupprimerClicked);
     connect(ui->btnModifier, &QPushButton::clicked, this, &MainWindow::btnModifierClicked);
 
-    // Database Connection
     Connection conn;
     if (!conn.createconnect()) {
-        QMessageBox::critical(this, "ERREUR", "CONNEXION À LA BASE DE DONNÉES ÉCHOUÉE !");
+        QMessageBox::critical(this, "ERREUR", "Connexion à la base de données échouée !");
     } else {
-        qDebug() << "✅ Database connection established successfully.";
+        qDebug() << "✅ Connexion réussie à la base de données.";
     }
 
-    afficherTaches(); // Load tasks on startup
+    afficherTaches();
 }
 
-// Function to display tasks
-void MainWindow::afficherTaches() {
+void MainWindow::trierTaches(const QString &critere)
+{
+    QSqlTableModel *model = qobject_cast<QSqlTableModel *>(ui->tableView->model());
+    if (!model) return;
+
+    int column = 0;  // par défaut ID_TACHE
+
+    if (critere == "id") {
+        column = 0;  // ID_TACHE
+    } else if (critere == "datedeb") {
+        column = 1;  // DATEDEB
+    } else if (critere == "datefin") {
+        column = 2;  // DATEFIN
+    }
+
+    model->setSort(column, Qt::AscendingOrder);
+    model->select();  // Rafraîchir les données triées
+}
+
+// Affichage des tâches dans le tableau
+void MainWindow::afficherTaches()
+{
     QSqlTableModel *model = new QSqlTableModel(this);
     model->setTable("TACHES");
+    model->setSort(0, Qt::AscendingOrder);  // Tri par ID_TACHE
+    model->select();
 
     if (!model->select()) {
-        qDebug() << "❌ Error loading table: " << model->lastError().text();
+        qDebug() << "❌ Erreur lors du chargement de la table :" << model->lastError().text();
         return;
     }
 
@@ -54,34 +75,33 @@ void MainWindow::afficherTaches() {
     ui->tableView->resizeColumnsToContents();
 }
 
-// Method to add a task
+// Ajout d'une tâche
 bool MainWindow::ajouter(const QString &ID_TACHE, const QString &DATEDEB, const QString &DATEFIN,
                          const QString &MISSION, const QString &STATUT, const QString &DESCRIPTION)
 {
-    QSqlDatabase db = QSqlDatabase::database("qt_sql_default_connection"); // Ensure correct connection
+    QSqlDatabase db = QSqlDatabase::database("qt_sql_default_connection");
     if (!db.isOpen()) {
-        QMessageBox::critical(this, "ERREUR", "LA CONNEXION À LA BASE DE DONNÉES EST FERMÉE !");
+        QMessageBox::critical(this, "ERREUR", "Connexion à la base de données fermée !");
         return false;
     }
 
     bool ok;
     int ID = ID_TACHE.toInt(&ok);
     if (!ok) {
-        QMessageBox::critical(this, "ERREUR", "L'ID DE LA TÂCHE DOIT ÊTRE UN ENTIER VALIDE.");
+        QMessageBox::critical(this, "ERREUR", "L'ID de la tâche doit être un entier valide.");
         return false;
     }
 
     if (DESCRIPTION.length() > 20) {
-        QMessageBox::critical(this, "ERREUR", "LA DESCRIPTION NE DOIT PAS DÉPASSER 20 CARACTÈRES !");
+        QMessageBox::critical(this, "ERREUR", "La description ne doit pas dépasser 20 caractères !");
         return false;
     }
 
-    // Check if ID_TACHE already exists
     QSqlQuery checkQuery;
     checkQuery.prepare("SELECT COUNT(*) FROM TACHES WHERE ID_TACHE = :ID_TACHE");
     checkQuery.bindValue(":ID_TACHE", ID);
     if (!checkQuery.exec()) {
-        qDebug() << "Check query error:" << checkQuery.lastError().text();
+        qDebug() << "Erreur checkQuery :" << checkQuery.lastError().text();
         return false;
     }
     checkQuery.next();
@@ -90,7 +110,6 @@ bool MainWindow::ajouter(const QString &ID_TACHE, const QString &DATEDEB, const 
         return false;
     }
 
-    // Insert new task
     QSqlQuery query;
     query.prepare("INSERT INTO TACHES (ID_TACHE, DATEDEB, DATEFIN, MISSION, STATUT, DESCRIPTION) "
                   "VALUES (:ID_TACHE, :DATEDEB, :DATEFIN, :MISSION, :STATUT, :DESCRIPTION)");
@@ -103,17 +122,18 @@ bool MainWindow::ajouter(const QString &ID_TACHE, const QString &DATEDEB, const 
     query.bindValue(":DESCRIPTION", DESCRIPTION);
 
     if (!query.exec()) {
-        qDebug() << "ERREUR SQL : " << query.lastError().text();
-        QMessageBox::critical(this, "ERREUR D'INSERTION", "ERREUR SQL : " + query.lastError().text());
+        qDebug() << "ERREUR SQL :" << query.lastError().text();
+        QMessageBox::critical(this, "ERREUR D'INSERTION", "Erreur SQL : " + query.lastError().text());
         return false;
     }
 
-    afficherTaches(); // Refresh task list
+    afficherTaches();
     return true;
 }
 
-// Slot for adding a task
-void MainWindow::btnAjouterClicked() {
+// Click sur bouton Ajouter
+void MainWindow::btnAjouterClicked()
+{
     QString ID_TACHE = ui->LINE_EDIT_ID_TACHE->text();
     QString DATEDEB = ui->DATE_EDIT_DEBUT->date().toString("yyyy-MM-dd");
     QString DATEFIN = ui->DATE_EDIT_FIN->date().toString("yyyy-MM-dd");
@@ -122,14 +142,14 @@ void MainWindow::btnAjouterClicked() {
     QString DESCRIPTION = ui->EDIT_DESCRIPTION->toPlainText();
 
     if (ID_TACHE.isEmpty() || MISSION.isEmpty()) {
-        QMessageBox::warning(this, "CHAMP(S) MANQUANT(S)", "VEUILLEZ REMPLIR TOUS LES CHAMPS OBLIGATOIRES.");
+        QMessageBox::warning(this, "CHAMP(S) MANQUANT(S)", "Veuillez remplir tous les champs obligatoires.");
         return;
     }
 
     if (ajouter(ID_TACHE, DATEDEB, DATEFIN, MISSION, STATUT, DESCRIPTION)) {
-        QMessageBox::information(this, "SUCCÈS", "LA TÂCHE A ÉTÉ AJOUTÉE AVEC SUCCÈS.");
+        QMessageBox::information(this, "SUCCÈS", "Tâche ajoutée avec succès.");
 
-        // Reset form
+        // Réinitialiser les champs
         ui->LINE_EDIT_ID_TACHE->clear();
         ui->DATE_EDIT_DEBUT->setDate(QDate::currentDate());
         ui->DATE_EDIT_FIN->setDate(QDate::currentDate());
@@ -139,105 +159,114 @@ void MainWindow::btnAjouterClicked() {
     }
 }
 
-// Slot for deleting a task
+// Click sur bouton Supprimer
 void MainWindow::btnSupprimerClicked() {
-    QString ID_TACHE = ui->suppline->text(); // Get ID from the "suppline" field for deletion
+    QString idTache = ui->suppline->text().trimmed();
 
-    if (ID_TACHE.isEmpty()) {
-        QMessageBox::warning(this, "SUPPRESSION", "VEUILLEZ ENTRER UN ID DE TÂCHE !");
+    if (idTache.isEmpty()) {
+        QMessageBox::warning(this, "Erreur", "Veuillez entrer un ID de tâche.");
         return;
     }
 
-    QSqlQuery query;
-    query.prepare("DELETE FROM TACHES WHERE ID_TACHE = :ID_TACHE");
-    query.bindValue(":ID_TACHE", ID_TACHE.toInt());
+    QSqlQuery checkQuery;
+    checkQuery.prepare("SELECT COUNT(*) FROM TACHES WHERE ID_TACHE = :id");
+    checkQuery.bindValue(":id", idTache);
 
-    if (query.exec()) {
-        QMessageBox::information(this, "SUCCÈS", "TÂCHE SUPPRIMÉE AVEC SUCCÈS !");
-        afficherTaches();
+    if (checkQuery.exec() && checkQuery.next()) {
+        int count = checkQuery.value(0).toInt();
+        if (count == 0) {
+            QMessageBox::information(this, "Suppression", "ID non trouvé.");
+            return;
+        }
     } else {
-        QMessageBox::critical(this, "ERREUR", "ÉCHEC DE LA SUPPRESSION : " + query.lastError().text());
+        QMessageBox::critical(this, "Erreur", "Échec de la vérification de l'ID.");
+        return;
+    }
+
+    QSqlQuery deleteQuery;
+    deleteQuery.prepare("DELETE FROM TACHES WHERE ID_TACHE = :id");
+    deleteQuery.bindValue(":id", idTache);
+
+    if (deleteQuery.exec()) {
+        QMessageBox::information(this, "Succès", "Tâche supprimée avec succès.");
+        afficherTaches(); // Refresh the task list
+    } else {
+        QMessageBox::critical(this, "Erreur", "Échec de la suppression de la tâche.");
     }
 }
 
-// Slot for modifying a task
-#include <QInputDialog>
+// Click sur bouton Modifier
+void MainWindow::btnModifierClicked()
+{
+    QString ID_TACHE = ui->modline->text();
 
-// Slot for modifying a task
-void MainWindow::btnModifierClicked() {
-    QString ID_TACHE = ui->modline->text();  // Get ID from the "modline" field for modification
-
-    // Check if ID_TACHE is empty
     if (ID_TACHE.isEmpty()) {
-        QMessageBox::warning(this, "MODIFICATION", "VEUILLEZ ENTRER UN ID DE TÂCHE !");
+        QMessageBox::warning(this, "MODIFICATION", "Veuillez entrer un ID de tâche !");
         return;
     }
 
-    // Ensure ID_TACHE is a valid integer
     bool ok;
     int idTacheInt = ID_TACHE.toInt(&ok);
     if (!ok) {
-        QMessageBox::warning(this, "MODIFICATION", "L'ID DE LA TÂCHE DOIT ÊTRE UN ENTIER VALIDE !");
+        QMessageBox::warning(this, "MODIFICATION", "L'ID de tâche doit être un nombre valide !");
         return;
     }
 
-    // Ask user for confirmation to modify the task
-    bool confirm = QMessageBox::question(this, "Confirmer la modification",
-                                         "Êtes-vous sûr de vouloir modifier cette tâche ?",
-                                         QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes;
+    ModifyDialog dialog(this);
+    dialog.setValues(ui->LINE_EDIT_MISSION->text(),
+                     ui->COMBO_BOX_STATUT->currentText(),
+                     ui->EDIT_DESCRIPTION->toPlainText(),
+                     ui->DATE_EDIT_DEBUT->date(),
+                     ui->DATE_EDIT_FIN->date());
 
-    if (confirm) {
-        // Prompt user for new values
-        QString newMission = QInputDialog::getText(this, "Modifier la mission", "Nouvelle mission:", QLineEdit::Normal, ui->LINE_EDIT_MISSION->text());
-        QString newStatut = QInputDialog::getItem(this, "Modifier le statut", "Nouveau statut:", {"En cours", "Terminé", "À faire"}, ui->COMBO_BOX_STATUT->currentIndex(), false);
-        QString newDescription = QInputDialog::getText(this, "Modifier la description", "Nouvelle description:", QLineEdit::Normal, ui->EDIT_DESCRIPTION->toPlainText());
-        QString newDateDeb = QInputDialog::getText(this, "Modifier la date de début", "Nouvelle date de début (dd/MM/yy):", QLineEdit::Normal, ui->DATE_EDIT_DEBUT->date().toString("dd/MM/yy"));
-        QString newDateFin = QInputDialog::getText(this, "Modifier la date de fin", "Nouvelle date de fin (dd/MM/yy):", QLineEdit::Normal, ui->DATE_EDIT_FIN->date().toString("dd/MM/yy"));
+    if (dialog.exec() == QDialog::Accepted) {
 
-        // If any of the new fields are empty, keep the old value
-        if (newMission.isEmpty()) {
-            newMission = ui->LINE_EDIT_MISSION->text();
-        }
-        if (newStatut.isEmpty()) {
-            newStatut = ui->COMBO_BOX_STATUT->currentText();
-        }
-        if (newDescription.isEmpty()) {
-            newDescription = ui->EDIT_DESCRIPTION->toPlainText();
-        }
-        if (newDateDeb.isEmpty()) {
-            newDateDeb = ui->DATE_EDIT_DEBUT->date().toString("dd/MM/yy");
-        }
-        if (newDateFin.isEmpty()) {
-            newDateFin = ui->DATE_EDIT_FIN->date().toString("dd/MM/yy");
+        // Récupération des nouvelles valeurs
+        QDate dateDeb = dialog.dateDebut();
+        QDate dateFin = dialog.dateFin();
+        QString mission = dialog.mission();
+        QString statut = dialog.statut();
+        QString description = dialog.description();
+
+        // --- Contrôle de saisie ---
+        if (dateDeb == dateFin) {
+            QMessageBox::warning(this, "Erreur", "La date de début ne peut pas être égale à la date de fin.");
+            return;
         }
 
-        // Prepare the UPDATE query
+        if (mission.trimmed().isEmpty()) {
+            QMessageBox::warning(this, "Erreur", "Le champ mission ne peut pas être vide.");
+            return;
+        }
+
+        if (description.trimmed().isEmpty()) {
+            QMessageBox::warning(this, "Erreur", "Le champ description ne peut pas être vide.");
+            return;
+        }
+
         QSqlQuery query;
         query.prepare("UPDATE TACHES SET DATEDEB = :DATEDEB, DATEFIN = :DATEFIN, MISSION = :MISSION, "
                       "STATUT = :STATUT, DESCRIPTION = :DESCRIPTION WHERE ID_TACHE = :ID_TACHE");
 
-        // Bind the values
         query.bindValue(":ID_TACHE", idTacheInt);
-        query.bindValue(":DATEDEB", newDateDeb);  // Date in dd/MM/yy format
-        query.bindValue(":DATEFIN", newDateFin);  // Date in dd/MM/yy format
-        query.bindValue(":MISSION", newMission);
-        query.bindValue(":STATUT", newStatut);
-        query.bindValue(":DESCRIPTION", newDescription);
+        query.bindValue(":DATEDEB", dateDeb);
+        query.bindValue(":DATEFIN", dateFin);
+        query.bindValue(":MISSION", mission);
+        query.bindValue(":STATUT", statut);
+        query.bindValue(":DESCRIPTION", description);
 
-        // Execute the query
         if (query.exec()) {
-            QMessageBox::information(this, "SUCCÈS", "TÂCHE MODIFIÉE AVEC SUCCÈS !");
-            afficherTaches();  // Refresh the task list
+            QMessageBox::information(this, "SUCCÈS", "Tâche modifiée avec succès !");
+            afficherTaches();
         } else {
-            QMessageBox::critical(this, "ERREUR", "ÉCHEC DE LA MODIFICATION : " + query.lastError().text());
+            QMessageBox::critical(this, "ERREUR", "Échec de la modification : " + query.lastError().text());
         }
     }
 }
 
 
-
-
-// Destructor
-MainWindow::~MainWindow() {
+// Destructeur
+MainWindow::~MainWindow()
+{
     delete ui;
 }

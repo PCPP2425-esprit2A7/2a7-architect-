@@ -12,15 +12,18 @@ SOURCES += \
     connection.cpp \
     main.cpp \
     mainwindow.cpp \
+    modifydialog.cpp \
     tache.cpp
 
 HEADERS += \
     connection.h \
     mainwindow.h \
+    modifydialog.h \
     tache.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    modifydialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

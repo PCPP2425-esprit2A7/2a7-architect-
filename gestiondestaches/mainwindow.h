@@ -19,6 +19,7 @@ private slots:
     void btnAjouterClicked();
     void btnSupprimerClicked();
     void btnModifierClicked();
+    void trierTaches(const QString &critere);
 
 private:
     Ui::MainWindow *ui;
