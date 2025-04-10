@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -31,10 +32,9 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QWidget *widget;
-    QPushButton *pushButton_stat;
-    QPushButton *pushButton_pdf;
     QLabel *label_15;
-    QLabel *label_16;
+    QPushButton *pushButton_pdf;
+    QFrame *line_6;
     QWidget *widget_2;
     QPushButton *pushButton_5;
     QPushButton *pushButton_6;
@@ -70,6 +70,12 @@ public:
     QPushButton *modifier;
     QPushButton *pushButton_13;
     QTableView *tableView;
+    QFrame *line;
+    QFrame *line_2;
+    QFrame *line_3;
+    QFrame *line_4;
+    QFrame *line_5;
+    QLabel *label_18;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -82,79 +88,74 @@ public:
         centralwidget->setObjectName("centralwidget");
         widget = new QWidget(centralwidget);
         widget->setObjectName("widget");
-        widget->setGeometry(QRect(0, 0, 1241, 181));
+        widget->setGeometry(QRect(0, 0, 1241, 131));
         widget->setStyleSheet(QString::fromUtf8("background-color: rgb(21, 118, 127);"));
-        pushButton_stat = new QPushButton(widget);
-        pushButton_stat->setObjectName("pushButton_stat");
-        pushButton_stat->setGeometry(QRect(650, 40, 93, 91));
-        pushButton_stat->setStyleSheet(QString::fromUtf8("image: url(:/img/d9515eb6-0b18-4234-8bfb-3d9f93867372-removebg-preview.png);\n"
-"background-color: rgb(255, 255, 255);"));
-        pushButton_pdf = new QPushButton(widget);
-        pushButton_pdf->setObjectName("pushButton_pdf");
-        pushButton_pdf->setGeometry(QRect(870, 40, 81, 91));
-        pushButton_pdf->setStyleSheet(QString::fromUtf8("image: url(:/img/f55703f4-fe07-4981-9fbf-901c974bc61e-removebg-preview.png);\n"
-"background-color: rgb(21, 118, 127);"));
         label_15 = new QLabel(widget);
         label_15->setObjectName("label_15");
-        label_15->setGeometry(QRect(660, 140, 81, 20));
-        label_15->setStyleSheet(QString::fromUtf8("font: 300 italic 9pt \"Neue Haas Grotesk Text Pro\";"));
-        label_16 = new QLabel(widget);
-        label_16->setObjectName("label_16");
-        label_16->setGeometry(QRect(890, 140, 63, 20));
-        label_16->setStyleSheet(QString::fromUtf8("font: 300 italic 9pt \"Neue Haas Grotesk Text Pro\";"));
+        label_15->setGeometry(QRect(870, 70, 61, 51));
+        label_15->setStyleSheet(QString::fromUtf8("image: url(:/img/f55703f4-fe07-4981-9fbf-901c974bc61e-removebg-preview.png);"));
+        pushButton_pdf = new QPushButton(widget);
+        pushButton_pdf->setObjectName("pushButton_pdf");
+        pushButton_pdf->setGeometry(QRect(940, 80, 71, 31));
+        pushButton_pdf->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 221);"));
+        line_6 = new QFrame(widget);
+        line_6->setObjectName("line_6");
+        line_6->setGeometry(QRect(930, 110, 81, 20));
+        line_6->setFrameShape(QFrame::Shape::HLine);
+        line_6->setFrameShadow(QFrame::Shadow::Sunken);
         widget_2 = new QWidget(centralwidget);
         widget_2->setObjectName("widget_2");
-        widget_2->setGeometry(QRect(-1, -1, 241, 761));
+        widget_2->setGeometry(QRect(-1, -1, 201, 761));
         widget_2->setStyleSheet(QString::fromUtf8("background-color: rgb(21, 118, 127);"));
         pushButton_5 = new QPushButton(widget_2);
         pushButton_5->setObjectName("pushButton_5");
-        pushButton_5->setGeometry(QRect(40, 600, 161, 81));
+        pushButton_5->setGeometry(QRect(20, 610, 141, 71));
         pushButton_5->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 221);\n"
 "font: 300 italic 9pt \"Neue Haas Grotesk Text Pro\";"));
         pushButton_6 = new QPushButton(widget_2);
         pushButton_6->setObjectName("pushButton_6");
-        pushButton_6->setGeometry(QRect(40, 490, 161, 81));
+        pushButton_6->setGeometry(QRect(20, 500, 141, 71));
         pushButton_6->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 221);\n"
 "font: 300 italic 9pt \"Neue Haas Grotesk Text Pro\";"));
         pushButton_7 = new QPushButton(widget_2);
         pushButton_7->setObjectName("pushButton_7");
-        pushButton_7->setGeometry(QRect(40, 390, 161, 81));
+        pushButton_7->setGeometry(QRect(20, 410, 141, 61));
         pushButton_7->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 221);\n"
 "font: 300 italic 9pt \"Neue Haas Grotesk Text Pro\";"));
         pushButton_8 = new QPushButton(widget_2);
         pushButton_8->setObjectName("pushButton_8");
-        pushButton_8->setGeometry(QRect(40, 280, 161, 81));
+        pushButton_8->setGeometry(QRect(20, 290, 141, 71));
         pushButton_8->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 221);\n"
 "font: 300 italic 9pt \"Neue Haas Grotesk Text Pro\";"));
         pushButton_9 = new QPushButton(widget_2);
         pushButton_9->setObjectName("pushButton_9");
-        pushButton_9->setGeometry(QRect(40, 180, 161, 81));
+        pushButton_9->setGeometry(QRect(20, 190, 141, 71));
         pushButton_9->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 221);\n"
 "font: 300 italic 9pt \"Neue Haas Grotesk Text Pro\";"));
         label_10 = new QLabel(widget_2);
         label_10->setObjectName("label_10");
-        label_10->setGeometry(QRect(50, 200, 51, 41));
+        label_10->setGeometry(QRect(30, 200, 51, 41));
         label_10->setStyleSheet(QString::fromUtf8("image: url(:/img/30450e23-1585-4026-bf26-7879437b7ae7-removebg-preview.png);\n"
 "background-color: rgb(255, 255, 255);"));
         label_11 = new QLabel(widget_2);
         label_11->setObjectName("label_11");
-        label_11->setGeometry(QRect(50, 290, 61, 51));
+        label_11->setGeometry(QRect(40, 300, 51, 41));
         label_11->setStyleSheet(QString::fromUtf8("image: url(:/img/53b42616-509a-420c-af93-8ec49e011018-removebg-preview.png);\n"
 "background-color: rgb(255, 255, 255);"));
         label_12 = new QLabel(widget_2);
         label_12->setObjectName("label_12");
-        label_12->setGeometry(QRect(50, 400, 71, 51));
+        label_12->setGeometry(QRect(40, 420, 61, 41));
         label_12->setStyleSheet(QString::fromUtf8("image :url(:/img/926054e0-28c6-4ced-9854-3ef5fdbd652a-removebg-preview.png);\n"
 "background-color: rgb(255, 255, 255);\n"
 ""));
         label_13 = new QLabel(widget_2);
         label_13->setObjectName("label_13");
-        label_13->setGeometry(QRect(50, 610, 61, 51));
+        label_13->setGeometry(QRect(40, 620, 51, 41));
         label_13->setStyleSheet(QString::fromUtf8("image :url(:/img/338f0f59-de2e-4b18-ba36-958153a5cd68-removebg-preview.png);\n"
 "background-color: rgb(255, 255, 255);"));
         label_14 = new QLabel(widget_2);
         label_14->setObjectName("label_14");
-        label_14->setGeometry(QRect(50, 500, 61, 51));
+        label_14->setGeometry(QRect(30, 510, 61, 41));
         label_14->setStyleSheet(QString::fromUtf8("image:url(:/img/3b48b488-886a-4a2f-911a-83bde255a6ce-removebg-preview.png);\n"
 "background-color: rgb(255, 255, 255);"));
         label_17 = new QLabel(widget_2);
@@ -227,7 +228,7 @@ public:
         combo->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255)"));
         label = new QLabel(centralwidget);
         label->setObjectName("label");
-        label->setGeometry(QRect(370, 189, 151, 61));
+        label->setGeometry(QRect(280, 170, 151, 81));
         label->setStyleSheet(QString::fromUtf8("font: 300 italic 9pt \"Neue Haas Grotesk Text Pro\";"));
         label_7 = new QLabel(centralwidget);
         label_7->setObjectName("label_7");
@@ -236,6 +237,7 @@ public:
         lineEdit_rechercher = new QLineEdit(centralwidget);
         lineEdit_rechercher->setObjectName("lineEdit_rechercher");
         lineEdit_rechercher->setGeometry(QRect(860, 220, 113, 26));
+        lineEdit_rechercher->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 221);"));
         label_8 = new QLabel(centralwidget);
         label_8->setObjectName("label_8");
         label_8->setGeometry(QRect(990, 220, 81, 20));
@@ -243,17 +245,88 @@ public:
         comboBox_tri = new QComboBox(centralwidget);
         comboBox_tri->setObjectName("comboBox_tri");
         comboBox_tri->setGeometry(QRect(1070, 220, 111, 26));
+        comboBox_tri->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 221);\n"
+""));
         modifier = new QPushButton(centralwidget);
         modifier->setObjectName("modifier");
         modifier->setGeometry(QRect(800, 670, 93, 29));
-        modifier->setStyleSheet(QString::fromUtf8("font: 300 italic 9pt \"Neue Haas Grotesk Text Pro\";"));
+        modifier->setStyleSheet(QString::fromUtf8("font: 300 italic 9pt \"Neue Haas Grotesk Text Pro\";\n"
+"background-color: rgb(255, 255, 221);"));
         pushButton_13 = new QPushButton(centralwidget);
         pushButton_13->setObjectName("pushButton_13");
         pushButton_13->setGeometry(QRect(960, 670, 93, 29));
-        pushButton_13->setStyleSheet(QString::fromUtf8("font: 300 italic 9pt \"Neue Haas Grotesk Text Pro\";"));
+        pushButton_13->setStyleSheet(QString::fromUtf8("font: 300 italic 9pt \"Neue Haas Grotesk Text Pro\";\n"
+"background-color: rgb(255, 255, 221);"));
         tableView = new QTableView(centralwidget);
         tableView->setObjectName("tableView");
-        tableView->setGeometry(QRect(710, 271, 501, 361));
+        tableView->setGeometry(QRect(700, 261, 521, 391));
+        tableView->setStyleSheet(QString::fromUtf8("QTableView {\n"
+"    background-color: #f8f9fa; /* Fond g\303\251n\303\251ral */\n"
+"    alternate-background-color: #e9ecef; /* Lignes altern\303\251es */\n"
+"    selection-background-color: #007BFF; /* Fond bleu pour la s\303\251lection */\n"
+"    selection-color: white; /* Texte blanc quand s\303\251lectionn\303\251 */\n"
+"    border: 1px solid #dee2e6; /* Bordure l\303\251g\303\250re */\n"
+"    gridline-color: #ced4da; /* Grille plus douce */\n"
+"    font-size: 14px; /* Taille de police plus lisible */\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #007BFF; /* Fond bleu pour les en-t\303\252tes */\n"
+"    color: white; /* Texte blanc */\n"
+"    font-weight: bold;\n"
+"    padding: 8px;\n"
+"    border: 1px solid #0056b3;\n"
+"    border-radius: 3px;\n"
+"    text-align: center;\n"
+"    font-size: 14px;\n"
+"}\n"
+"\n"
+"QTableView::item {\n"
+"    padding: 6px;\n"
+"    border-bottom: 1px solid #ddd;\n"
+"    transition: background 0.3s ease-in-out; /* Animation douce */\n"
+""
+                        "}\n"
+"\n"
+"QTableView::item:selected {\n"
+"    background-color: #0056b3;\n"
+"    color: white;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QTableView::item:hover {\n"
+"    background-color: #d6e4ff; /* Effet de survol */\n"
+"}"));
+        line = new QFrame(centralwidget);
+        line->setObjectName("line");
+        line->setGeometry(QRect(710, 230, 131, 20));
+        line->setFrameShape(QFrame::Shape::HLine);
+        line->setFrameShadow(QFrame::Shadow::Sunken);
+        line_2 = new QFrame(centralwidget);
+        line_2->setObjectName("line_2");
+        line_2->setGeometry(QRect(990, 230, 71, 20));
+        line_2->setFrameShape(QFrame::Shape::HLine);
+        line_2->setFrameShadow(QFrame::Shadow::Sunken);
+        line_3 = new QFrame(centralwidget);
+        line_3->setObjectName("line_3");
+        line_3->setGeometry(QRect(280, 220, 131, 20));
+        line_3->setFrameShape(QFrame::Shape::HLine);
+        line_3->setFrameShadow(QFrame::Shadow::Sunken);
+        line_4 = new QFrame(centralwidget);
+        line_4->setObjectName("line_4");
+        line_4->setGeometry(QRect(260, 260, 20, 441));
+        line_4->setFrameShape(QFrame::Shape::VLine);
+        line_4->setFrameShadow(QFrame::Shadow::Sunken);
+        line_5 = new QFrame(centralwidget);
+        line_5->setObjectName("line_5");
+        line_5->setGeometry(QRect(670, 240, 20, 441));
+        line_5->setFrameShape(QFrame::Shape::VLine);
+        line_5->setFrameShadow(QFrame::Shadow::Sunken);
+        label_18 = new QLabel(centralwidget);
+        label_18->setObjectName("label_18");
+        label_18->setGeometry(QRect(400, 180, 101, 51));
+        label_18->setStyleSheet(QString::fromUtf8("image: url(:/img/338f0f59-de2e-4b18-ba36-958153a5cd68-removebg-preview.png);"));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -271,10 +344,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        pushButton_stat->setText(QString());
-        pushButton_pdf->setText(QString());
-        label_15->setText(QCoreApplication::translate("MainWindow", "Statistique", nullptr));
-        label_16->setText(QCoreApplication::translate("MainWindow", "PDF", nullptr));
+        label_15->setText(QString());
+        pushButton_pdf->setText(QCoreApplication::translate("MainWindow", "PDF", nullptr));
         pushButton_5->setText(QCoreApplication::translate("MainWindow", "                     Projets", nullptr));
         pushButton_6->setText(QCoreApplication::translate("MainWindow", "                      Formations", nullptr));
         pushButton_7->setText(QCoreApplication::translate("MainWindow", "                            Taches", nullptr));
@@ -303,6 +374,7 @@ public:
         label_8->setText(QCoreApplication::translate("MainWindow", "Trier selon :", nullptr));
         modifier->setText(QCoreApplication::translate("MainWindow", "Modifier", nullptr));
         pushButton_13->setText(QCoreApplication::translate("MainWindow", "Supprimer", nullptr));
+        label_18->setText(QString());
     } // retranslateUi
 
 };

@@ -4,6 +4,7 @@
 #include <QSqlQueryModel>
 #include <QObject>
 #include <QString>
+
 GestionProjet::GestionProjet() {
     id_projet = 0;
     nom_projet = "";
@@ -12,6 +13,7 @@ GestionProjet::GestionProjet() {
     date_debut = "";
     date_fin = "";
 }
+
 GestionProjet::GestionProjet(int id, QString nom, QString desc, QString stat, QString debut, QString fin) {
     id_projet = id;
     nom_projet = nom;
@@ -35,16 +37,16 @@ bool GestionProjet::ajouter() {
 
     return query.exec();
 }
-bool GestionProjet::supprimer(int id){
+
+bool GestionProjet::supprimer(int id) {
     QSqlQuery query;
-    QString res=QString::number(id);
-    query.prepare("Delete from GESTION_PROJET where id_projet= :id");
-    query.bindValue(":id",res);
+    query.prepare("DELETE FROM GESTION_PROJET WHERE ID_PROJET = :id");
+    query.bindValue(":id", id);
     return query.exec();
 }
-QSqlQueryModel * GestionProjet::afficher()
-{
-    QSqlQueryModel * model = new QSqlQueryModel();
+
+QSqlQueryModel *GestionProjet::afficher() {
+    QSqlQueryModel *model = new QSqlQueryModel();
     model->setQuery("SELECT ID_PROJET, NOM_PROJET, DESCRIPTION, STATUT, TO_CHAR(DATE_DEBUT, 'DD/MM/YYYY'), TO_CHAR(DATE_FIN, 'DD/MM/YYYY') FROM GESTION_PROJET");
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
@@ -54,14 +56,15 @@ QSqlQueryModel * GestionProjet::afficher()
     model->setHeaderData(5, Qt::Horizontal, QObject::tr("Date Fin"));
     return model;
 }
+
 bool GestionProjet::existe(int id) {
     QSqlQuery query;
     query.prepare("SELECT ID_PROJET FROM GESTION_PROJET WHERE ID_PROJET = :id");
     query.bindValue(":id", id);
     query.exec();
-
-    return query.next(); // Retourne true si un projet avec cet ID existe déjà
+    return query.next();
 }
+
 bool GestionProjet::modifier(int id, QString nom, QString desc, QString statut, QString date_debut, QString date_fin) {
     QSqlQuery query;
     query.prepare("UPDATE GESTION_PROJET SET NOM_PROJET = :nom, DESCRIPTION = :desc, STATUT = :statut, DATE_DEBUT = TO_DATE(:date_debut, 'DD/MM/YYYY'), DATE_FIN = TO_DATE(:date_fin, 'DD/MM/YYYY') WHERE ID_PROJET = :id");

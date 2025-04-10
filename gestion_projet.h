@@ -22,8 +22,6 @@ public:
     bool existe(int id);
     bool modifier(int id, QString nom, QString desc, QString statut, QString date_debut, QString date_fin);
     QSqlQueryModel* afficher();
-
 };
-
 
 #endif // GESTION_PROJET_H

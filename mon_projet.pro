@@ -12,15 +12,18 @@ SOURCES += \
     connexion.cpp \
     gestion_projet.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    modifier.cpp
 
 HEADERS += \
     connexion.h \
     gestion_projet.h \
-    mainwindow.h
+    mainwindow.h \
+    modifier.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    modifier.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
