@@ -50,6 +50,7 @@ public:
     void exporterPDF(QTableView *tableView);
     QSqlQueryModel* trierParPrix();  // Trier les formations par prix
     QSqlQueryModel* trierParDate();  // Trier les formations par date
+    QSqlQueryModel* rechercherParLieu(const QString& lieu);
 };
 
 #endif // FORMATION_H

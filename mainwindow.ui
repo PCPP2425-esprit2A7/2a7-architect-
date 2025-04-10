@@ -288,8 +288,8 @@ QLabel {
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>75</y>
+       <x>30</x>
+       <y>50</y>
        <width>51</width>
        <height>21</height>
       </rect>
@@ -302,7 +302,7 @@ QLabel {
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>140</y>
+       <y>120</y>
        <width>81</width>
        <height>31</height>
       </rect>
@@ -314,8 +314,8 @@ QLabel {
     <widget class="QLabel" name="label_6">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>390</y>
+       <x>20</x>
+       <y>370</y>
        <width>49</width>
        <height>16</height>
       </rect>
@@ -327,8 +327,8 @@ QLabel {
     <widget class="QLabel" name="label_7">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>330</y>
+       <x>20</x>
+       <y>310</y>
        <width>49</width>
        <height>16</height>
       </rect>
@@ -340,8 +340,8 @@ QLabel {
     <widget class="QLabel" name="label_8">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>210</y>
+       <x>20</x>
+       <y>180</y>
        <width>71</width>
        <height>31</height>
       </rect>
@@ -354,7 +354,7 @@ QLabel {
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>270</y>
+       <y>240</y>
        <width>91</width>
        <height>31</height>
       </rect>
@@ -366,8 +366,8 @@ QLabel {
     <widget class="QLineEdit" name="lineEdit_id">
      <property name="geometry">
       <rect>
-       <x>132</x>
-       <y>70</y>
+       <x>130</x>
+       <y>50</y>
        <width>141</width>
        <height>31</height>
       </rect>
@@ -376,8 +376,8 @@ QLabel {
     <widget class="QLineEdit" name="lineEdit_formateur">
      <property name="geometry">
       <rect>
-       <x>132</x>
-       <y>270</y>
+       <x>130</x>
+       <y>240</y>
        <width>141</width>
        <height>31</height>
       </rect>
@@ -386,8 +386,8 @@ QLabel {
     <widget class="QLineEdit" name="lineEdit_lieu">
      <property name="geometry">
       <rect>
-       <x>132</x>
-       <y>330</y>
+       <x>130</x>
+       <y>300</y>
        <width>141</width>
        <height>31</height>
       </rect>
@@ -396,8 +396,8 @@ QLabel {
     <widget class="QDateEdit" name="lineEdit_dateFin">
      <property name="geometry">
       <rect>
-       <x>129</x>
-       <y>210</y>
+       <x>130</x>
+       <y>180</y>
        <width>141</width>
        <height>31</height>
       </rect>
@@ -406,8 +406,8 @@ QLabel {
     <widget class="QDateEdit" name="lineEdit_dateDebut">
      <property name="geometry">
       <rect>
-       <x>129</x>
-       <y>140</y>
+       <x>130</x>
+       <y>120</y>
        <width>141</width>
        <height>31</height>
       </rect>
@@ -537,7 +537,7 @@ QPushButton:pressed {
      <property name="geometry">
       <rect>
        <x>130</x>
-       <y>380</y>
+       <y>360</y>
        <width>141</width>
        <height>31</height>
       </rect>
@@ -744,7 +744,7 @@ QLabel {
 </string>
     </property>
     <property name="text">
-     <string>Recherché Par Nom :</string>
+     <string>Recherché Par Lieu :</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_4">
@@ -1008,7 +1008,7 @@ QLabel {
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">#btnAjouterr {
+     <string notr="true">#btnPdf {
    background-color: rgb(21, 118, 127);
     color: white;
     font-size: 14px;
@@ -1042,13 +1042,13 @@ QPushButton:pressed {
 }
 
 /* Effet au survol */
-#btnAjouterr:hover {
+#btnPdf:hover {
     background-color: #219150; /* Vert plus foncé */
     border: 2px solid #1e8449;
 }
 
 /* Effet au clic */
-#btnAjouterr:pressed {
+#btnPdf:pressed {
     background-color: #1e8449; /* Vert encore plus foncé */
     border: 2px solid #166735;
 }
@@ -1232,7 +1232,7 @@ QPushButton:pressed {
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnAjouterr_2">
+   <widget class="QPushButton" name="afficherStatistiques">
     <property name="geometry">
      <rect>
       <x>740</x>
@@ -1242,7 +1242,7 @@ QPushButton:pressed {
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">#btnAjouterr_2 {
+     <string notr="true">#afficherStatistiques {
    background-color: rgb(21, 118, 127);
     color: white;
     font-size: 14px;
@@ -1276,13 +1276,13 @@ QPushButton:pressed {
 }
 
 /* Effet au survol */
-#btnAjouterr_2:hover {
+#afficherStatistiques:hover {
     background-color: #219150; /* Vert plus foncé */
     border: 2px solid #1e8449;
 }
 
 /* Effet au clic */
-#btnAjouterr_2:pressed {
+#afficherStatistiques:pressed {
     background-color: #1e8449; /* Vert encore plus foncé */
     border: 2px solid #166735;
 }
@@ -1355,8 +1355,8 @@ QPushButton:pressed {
    <widget class="QPushButton" name="btnAjouter_3">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>540</y>
+      <x>1320</x>
+      <y>600</y>
       <width>131</width>
       <height>31</height>
      </rect>
@@ -1475,8 +1475,8 @@ QPushButton:pressed {
    <widget class="QTableView" name="tableView">
     <property name="geometry">
      <rect>
-      <x>700</x>
-      <y>220</y>
+      <x>730</x>
+      <y>250</y>
       <width>711</width>
       <height>271</height>
      </rect>
@@ -1519,6 +1519,66 @@ QTableView::item:selected {
 QTableView::item:hover {
     background-color: #d6e4ff; /* Effet de survol */
 }</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="maps">
+    <property name="geometry">
+     <rect>
+      <x>970</x>
+      <y>60</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#btnPdf {
+   background-color: rgb(21, 118, 127);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #219150;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;QPushButton {
+    background-color: #27ae60; /* Vert moderne */
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #219150;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Effet au survol */
+QPushButton:hover {
+    background-color: #219150;
+    border: 2px solid #1e8449;
+}
+
+/* Effet au clic */
+QPushButton:pressed {
+    background-color: #1e8449;
+    border: 2px solid #166735;
+}
+
+}
+
+/* Effet au survol */
+#btnPdf:hover {
+    background-color: #219150; /* Vert plus foncé */
+    border: 2px solid #1e8449;
+}
+
+/* Effet au clic */
+#btnPdf:pressed {
+    background-color: #1e8449; /* Vert encore plus foncé */
+    border: 2px solid #166735;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>maps</string>
     </property>
    </widget>
   </widget>

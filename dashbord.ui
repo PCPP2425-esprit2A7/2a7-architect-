@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>dashbord</class>
+ <widget class="QDialog" name="dashbord">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1559</width>
+    <height>682</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>630</y>
+     <width>341</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Orientation::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1581</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(21, 118, 127);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>80</y>
+     <width>241</width>
+     <height>591</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(21, 118, 127);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>-170</x>
+     <y>-90</y>
+     <width>581</width>
+     <height>341</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/res/10.jpeg);
+image: url(:/res/989.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_6">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>160</y>
+     <width>241</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+   background-color: rgb(255, 245, 221);
+    color: Black;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #2980b9;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+QPushButton:hover {
+    background-color: #2980b9; /* Bleu plus foncé au survol */
+    border: 2px solid #1f618d;
+}
+
+QPushButton:pressed {
+    background-color: #1f618d; /* Bleu encore plus foncé au clic */
+    border: 2px solid #154360;
+}
+
+
+</string>
+   </property>
+   <property name="text">
+    <string>Dashbord</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>240</y>
+     <width>241</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+   background-color: rgb(255, 245, 221);
+    color: Black;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #2980b9;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+QPushButton:hover {
+    background-color: #2980b9; /* Bleu plus foncé au survol */
+    border: 2px solid #1f618d;
+}
+
+QPushButton:pressed {
+    background-color: #1f618d; /* Bleu encore plus foncé au clic */
+    border: 2px solid #154360;
+}
+
+
+</string>
+   </property>
+   <property name="text">
+    <string>Clients</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>320</y>
+     <width>241</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+   background-color: rgb(255, 245, 221);
+    color: Black;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #2980b9;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+QPushButton:hover {
+    background-color: #2980b9; /* Bleu plus foncé au survol */
+    border: 2px solid #1f618d;
+}
+
+QPushButton:pressed {
+    background-color: #1f618d; /* Bleu encore plus foncé au clic */
+    border: 2px solid #154360;
+}
+
+
+</string>
+   </property>
+   <property name="text">
+    <string>Taches</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>400</y>
+     <width>241</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+   background-color: rgb(255, 245, 221);
+    color: Black;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #2980b9;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+QPushButton:hover {
+    background-color: #2980b9; /* Bleu plus foncé au survol */
+    border: 2px solid #1f618d;
+}
+
+QPushButton:pressed {
+    background-color: #1f618d; /* Bleu encore plus foncé au clic */
+    border: 2px solid #154360;
+}
+
+
+</string>
+   </property>
+   <property name="text">
+    <string>Formations</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_5">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>480</y>
+     <width>241</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+   background-color: rgb(255, 245, 221);
+    color: Black;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #2980b9;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+QPushButton:hover {
+    background-color: #2980b9; /* Bleu plus foncé au survol */
+    border: 2px solid #1f618d;
+}
+
+QPushButton:pressed {
+    background-color: #1f618d; /* Bleu encore plus foncé au clic */
+    border: 2px solid #154360;
+}
+
+
+</string>
+   </property>
+   <property name="text">
+    <string>Projets</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_7">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>560</y>
+     <width>241</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+   background-color: rgb(255, 245, 221);
+    color: Black;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #2980b9;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+QPushButton:hover {
+    background-color: #2980b9; /* Bleu plus foncé au survol */
+    border: 2px solid #1f618d;
+}
+
+QPushButton:pressed {
+    background-color: #1f618d; /* Bleu encore plus foncé au clic */
+    border: 2px solid #154360;
+}
+
+
+</string>
+   </property>
+   <property name="text">
+    <string>Architectes</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_15">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>180</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/res/16854774.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>260</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/res/7891470.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>340</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/res/33.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>420</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+border-image: url(:/res/12214354.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_14">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>500</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/res/2942499.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_22">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>580</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/res/777.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnAjouter_2">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>630</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#btnAjouter_2 {
+   background-color: rgb(21, 118, 127);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #219150;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;QPushButton {
+    background-color: #27ae60; /* Vert moderne */
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #219150;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Effet au survol */
+QPushButton:hover {
+    background-color: #219150;
+    border: 2px solid #1e8449;
+}
+
+/* Effet au clic */
+QPushButton:pressed {
+    background-color: #1e8449;
+    border: 2px solid #166735;
+}
+
+}
+
+/* Effet au survol */
+#btnAjouter_2:hover {
+    background-color: #219150; /* Vert plus foncé */
+    border: 2px solid #1e8449;
+}
+
+/* Effet au clic */
+#btnAjouter_2:pressed {
+    background-color: #1e8449; /* Vert encore plus foncé */
+    border: 2px solid #166735;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Se Déconnecter</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>1460</x>
+     <y>10</y>
+     <width>91</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/res/98.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="notificationTableView">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>140</y>
+     <width>1141</width>
+     <height>471</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>dashbord</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>dashbord</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

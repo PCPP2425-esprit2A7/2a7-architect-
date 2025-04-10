@@ -12,24 +12,39 @@
 #include <QFileDialog>
 #include <QVBoxLayout>
 #include <QListWidget>
+#include <QtCharts/QChartView>
+#include <QtCharts/QPieSeries>
+#include <QtCharts/QBarSeries>
+#include <QtCharts/QBarSet>
+#include <QtCharts/QValueAxis>
+#include <QtCharts/QBarCategoryAxis>
+#include <QSqlQuery>
+#include <QSqlQueryModel>
+#include <QSqlError>
+#include <QSqlQuery>
+#include <QMessageBox>
+#include <QSqlDatabase>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     ui->tableView->setModel(fr.afficherListe());
-    // Set placeholder text for the search field
     ui->lineEdit_4->setPlaceholderText("Rechercher...");
-    connect(ui->btnPdf, &QPushButton::clicked, this, &MainWindow::on_btnPdf_clicked);
-}
 
+    // Ajoutez cette connexion (remplacez "btnStats" par le nom réel de votre bouton)
+    connect(ui->afficherStatistiques, &QPushButton::clicked, this, &MainWindow::afficherStatistiques);
+
+    connect(ui->btnPdf, &QPushButton::clicked, this, &MainWindow::on_btnPdf_clicked);
+
+}
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
 
-         // Pour la manipulation des dates
+// Pour la manipulation des dates
 
 void MainWindow::on_btnAjouter_clicked() {
     // Récupérer les valeurs saisies dans les QLineEdits
@@ -337,3 +352,88 @@ void MainWindow::trierParDate()
 
 
 
+
+void MainWindow::on_lineEdit_4_textChanged(const QString &arg1)
+{
+    QSqlQueryModel *model = fr.rechercherParLieu(arg1);
+    ui->tableView->setModel(model);
+}
+void MainWindow::afficherStatistiques() {
+    // 1. Requête SQL pour obtenir la somme des prix par formateur
+    QSqlQuery query;
+    if(!query.exec("SELECT FORMATEUR, SUM(PRIX) FROM FORMATION GROUP BY FORMATEUR ORDER BY SUM(PRIX) DESC")) {
+        QMessageBox::critical(this, "Erreur", "Erreur SQL: " + query.lastError().text());
+        return;
+    }
+
+    // 2. Préparation des données
+    QMap<QString, double> data; // Utilisation d'une map pour éviter les doublons
+    while(query.next()) {
+        QString formateur = query.value(0).toString();
+        double prixTotal = query.value(1).toDouble();
+        data[formateur] = prixTotal;
+    }
+
+    if(data.isEmpty()) {
+        QMessageBox::information(this, "Info", "Aucune donnée disponible");
+        return;
+    }
+
+    // 3. Création des graphiques
+    // Camembert
+    QPieSeries *pieSeries = new QPieSeries();
+    for(auto it = data.begin(); it != data.end(); ++it) {
+        QString label = QString("%1 (%2 DT)").arg(it.key()).arg(it.value());
+        QPieSlice *slice = pieSeries->append(label, it.value());
+        slice->setLabelVisible();
+    }
+
+    // Graphique à barres
+    QBarSeries *barSeries = new QBarSeries();
+    QBarSet *barSet = new QBarSet("Prix (DT)");
+
+    QStringList categories;
+    for(auto it = data.begin(); it != data.end(); ++it) {
+        *barSet << it.value();
+        categories << it.key();
+    }
+    barSeries->append(barSet);
+
+    // 4. Configuration des graphiques
+    QChart *pieChart = new QChart();
+    pieChart->addSeries(pieSeries);
+    pieChart->setTitle("Répartition des prix par formateur");
+    pieChart->legend()->setAlignment(Qt::AlignRight);
+
+    QChart *barChart = new QChart();
+    barChart->addSeries(barSeries);
+    barChart->setTitle("Prix des formations par formateur");
+
+    // Configuration des axes pour le graphique à barres
+    QBarCategoryAxis *axisX = new QBarCategoryAxis();
+    axisX->append(categories);
+    axisX->setTitleText("Formateurs");
+    barChart->addAxis(axisX, Qt::AlignBottom);
+    barSeries->attachAxis(axisX);
+
+    QValueAxis *axisY = new QValueAxis();
+    axisY->setTitleText("Prix (DT)");
+    barChart->addAxis(axisY, Qt::AlignLeft);
+    barSeries->attachAxis(axisY);
+
+    // 5. Affichage
+    QChartView *pieView = new QChartView(pieChart);
+    pieView->setRenderHint(QPainter::Antialiasing);
+
+    QChartView *barView = new QChartView(barChart);
+    barView->setRenderHint(QPainter::Antialiasing);
+
+    // Fenêtre de visualisation
+    QWidget *statsWindow = new QWidget();
+    statsWindow->setWindowTitle("Statistiques des formations");
+    QHBoxLayout *layout = new QHBoxLayout(statsWindow);
+    layout->addWidget(pieView);
+    layout->addWidget(barView);
+    statsWindow->resize(1200, 600);
+    statsWindow->show();
+}

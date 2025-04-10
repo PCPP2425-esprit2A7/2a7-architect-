@@ -2,7 +2,7 @@
 #define MODIFIER_H
 
 #include <QDialog>
-
+#include "mainwindow.h"
 namespace Ui {
 class modifier;
 }
@@ -19,8 +19,11 @@ public:
 private slots:
     void on_buttonBox_accepted();
 
+
+
 private:
     Ui::modifier *ui;
+
 };
 
 #endif // MODIFIER_H

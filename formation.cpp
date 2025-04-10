@@ -170,3 +170,12 @@ QSqlQueryModel* Formation::trierParDate() {
 
     return model;
 }
+QSqlQueryModel* Formation::rechercherParLieu(const QString& lieu) {
+    QSqlQueryModel *model = new QSqlQueryModel();
+    QSqlQuery query;
+    query.prepare("SELECT ID_FORMATION, TO_CHAR(DATEDEBUT, 'DD/MM/YYYY'), TO_CHAR(DATEFIN, 'DD/MM/YYYY'), FORMATEUR, LIEU, PRIX FROM FORMATION WHERE LIEU LIKE :lieu");
+    query.bindValue(":lieu", "%" + lieu + "%");
+    query.exec();
+    model->setQuery(query);
+    return model;
+}

@@ -5,6 +5,7 @@
 #include <QRegularExpression> // Pour les expressions régulières
 #include <QMessageBox>       // Pour les boîtes de dialogue
 #include <QDate>             // Pour la manipulation des dates
+
 modifier::modifier(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::modifier)
@@ -100,3 +101,6 @@ void modifier::on_buttonBox_accepted() {
         QMessageBox::critical(this, "Erreur", "Échec de la modification de la formation.");
     }
 }
+
+
+

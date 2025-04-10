@@ -261,6 +261,53 @@ QLabel {
       <height>24</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">#buttonBox {
+   background-color: rgb(21, 118, 127);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #219150;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;QPushButton {
+    background-color: #27ae60; /* Vert moderne */
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #219150;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Effet au survol */
+QPushButton:hover {
+    background-color: #219150;
+    border: 2px solid #1e8449;
+}
+
+/* Effet au clic */
+QPushButton:pressed {
+    background-color: #1e8449;
+    border: 2px solid #166735;
+}
+
+}
+
+/* Effet au survol */
+#buttonBox:hover {
+    background-color: #219150; /* Vert plus foncé */
+    border: 2px solid #1e8449;
+}
+
+/* Effet au clic */
+#buttonBox:pressed {
+    background-color: #1e8449; /* Vert encore plus foncé */
+    border: 2px solid #166735;
+}
+</string>
+    </property>
     <property name="standardButtons">
      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
     </property>

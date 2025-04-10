@@ -128,7 +128,7 @@ QLabel {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">#pushButton {
+    <string notr="true">#supprimer {
    background-color: rgb(21, 118, 127);
     color: white;
     font-size: 14px;
@@ -162,13 +162,13 @@ QPushButton:pressed {
 }
 
 /* Effet au survol */
-#pushButton:hover {
+#supprimer:hover {
     background-color: #219150; /* Vert plus foncé */
     border: 2px solid #1e8449;
 }
 
 /* Effet au clic */
-#pushButton:pressed {
+#supprimer:pressed {
     background-color: #1e8449; /* Vert encore plus foncé */
     border: 2px solid #166735;
 }
@@ -188,7 +188,7 @@ QPushButton:pressed {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">#pushButton_2 {
+    <string notr="true">#pushButtonanuul {
    background-color: rgb(21, 118, 127);
     color: white;
     font-size: 14px;
@@ -222,13 +222,13 @@ QPushButton:pressed {
 }
 
 /* Effet au survol */
-#pushButton_2:hover {
+#pushButtonanuul:hover {
     background-color: #219150; /* Vert plus foncé */
     border: 2px solid #1e8449;
 }
 
 /* Effet au clic */
-#pushButton_2:pressed {
+#pushButtonanuul:pressed {
     background-color: #1e8449; /* Vert encore plus foncé */
     border: 2px solid #166735;
 }
