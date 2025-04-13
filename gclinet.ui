@@ -454,7 +454,7 @@ QComboBox::drop-down {
        </property>
       </item>
      </widget>
-     <widget class="QPushButton" name="pushButton_8">
+     <widget class="QPushButton" name="buttonRechercher">
       <property name="geometry">
        <rect>
         <x>920</x>
@@ -524,7 +524,7 @@ QPushButton:pressed {
        <string>Supprimer</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="lineEditPrenom">
       <property name="geometry">
        <rect>
         <x>730</x>

@@ -39,6 +39,9 @@ public:
     bool modifier();
     QSqlQueryModel * trierParNbProjet(bool ascendant);
 
+    // Recherche par prénom
+    QSqlQueryModel * rechercherParPrenom(const QString &prenom);
+
 
 };
 

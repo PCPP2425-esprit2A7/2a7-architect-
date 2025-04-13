@@ -102,6 +102,33 @@ QSqlQueryModel * ClientManager::trierParNbProjet(bool ascendant) {
 }
 
 
+QSqlQueryModel * ClientManager::rechercherParPrenom(const QString &prenom) {
+    QSqlQueryModel *model = new QSqlQueryModel();
+    QSqlQuery query;
+
+    // Préparer la requête SQL pour rechercher par prénom
+    query.prepare("SELECT * FROM Client WHERE prenom LIKE :prenom ORDER BY nb_projet ASC");
+    query.bindValue(":prenom", "%" + prenom + "%");
+
+    if (query.exec()) {
+        model->setQuery(query);
+    } else {
+        // Gérer l'erreur de la requête
+        qDebug() << "Erreur lors de la recherche par prénom:" << query.lastError().text();
+    }
+
+    // Définir les en-têtes de colonnes
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("id_client"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("email"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("num_tlf"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("nb_projet"));
+
+    return model;
+}
+
+
 
 
 

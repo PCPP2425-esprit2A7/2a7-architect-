@@ -35,10 +35,17 @@ Gclinet::Gclinet(QWidget *parent)
      // Connexion du signal du combobox au slot pour le tri
     connect(ui->tri, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Gclinet::onTriChanged);
 
+
+    connect(ui->buttonRechercher, &QPushButton::clicked, this, [this]() {
+        QString prenom = ui->lineEditPrenom->text();
+        QSqlQueryModel *model = Client.rechercherParPrenom(prenom);
+        ui->tableView->setModel(model);
+    });
+
     ui->stackedWidget->setCurrentWidget(ui->page);
 
     // Set placeholder text for search
-    ui->lineEdit->setPlaceholderText("Recherher..."); 
+    ui->lineEditPrenom->setPlaceholderText("Recherher..."); 
     // Active les couleurs alternées pour les lignes
     ui->tableView->setAlternatingRowColors(true);
     //initialisation d'affichage

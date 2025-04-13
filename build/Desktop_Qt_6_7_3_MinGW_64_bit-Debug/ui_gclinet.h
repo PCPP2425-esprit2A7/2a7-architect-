@@ -53,9 +53,9 @@ public:
     QLabel *nomClient_3;
     QTableView *tableView;
     QComboBox *tri;
-    QPushButton *pushButton_8;
+    QPushButton *buttonRechercher;
     QPushButton *suppclient;
-    QLineEdit *lineEdit;
+    QLineEdit *lineEditPrenom;
     QPushButton *modifierClient;
     QWidget *widget;
     QPushButton *pushButton_3;
@@ -298,10 +298,10 @@ public:
 "     border: 2px solid #cccccc;\n"
 "\n"
 "}"));
-        pushButton_8 = new QPushButton(page);
-        pushButton_8->setObjectName("pushButton_8");
-        pushButton_8->setGeometry(QRect(920, 170, 161, 31));
-        pushButton_8->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        buttonRechercher = new QPushButton(page);
+        buttonRechercher->setObjectName("buttonRechercher");
+        buttonRechercher->setGeometry(QRect(920, 170, 161, 31));
+        buttonRechercher->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "   \n"
 "    color: Black;\n"
 "    font-size: 14px;\n"
@@ -344,10 +344,10 @@ public:
 "    background-color: #1f618d; /* Bleu encore plus fonc\303\251 au clic */\n"
 "    border: 2px solid #154360;\n"
 "}"));
-        lineEdit = new QLineEdit(page);
-        lineEdit->setObjectName("lineEdit");
-        lineEdit->setGeometry(QRect(730, 170, 181, 31));
-        lineEdit->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+        lineEditPrenom = new QLineEdit(page);
+        lineEditPrenom->setObjectName("lineEditPrenom");
+        lineEditPrenom->setGeometry(QRect(730, 170, 181, 31));
+        lineEditPrenom->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "    background-color: white;\n"
 "    color: black;\n"
 "    font-size: 14px;\n"
@@ -661,9 +661,9 @@ public:
         tri->setItemText(0, QCoreApplication::translate("Gclinet", "nb_projet+", nullptr));
         tri->setItemText(1, QCoreApplication::translate("Gclinet", "Nb-projet-", nullptr));
 
-        pushButton_8->setText(QCoreApplication::translate("Gclinet", "Recherche", nullptr));
+        buttonRechercher->setText(QCoreApplication::translate("Gclinet", "Recherche", nullptr));
         suppclient->setText(QCoreApplication::translate("Gclinet", "Supprimer", nullptr));
-        lineEdit->setText(QString());
+        lineEditPrenom->setText(QString());
         modifierClient->setText(QCoreApplication::translate("Gclinet", "Modifer", nullptr));
         pushButton_3->setText(QCoreApplication::translate("Gclinet", "Dashboard", nullptr));
         pushButton_4->setText(QCoreApplication::translate("Gclinet", "Clients", nullptr));
