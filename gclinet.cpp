@@ -1,193 +1,310 @@
+// Gclinet.cpp
 #include "gclinet.h"
-#include "clientmanager.h"
-#include "./ui_gclinet.h"
-#include "supp.h"
-#include "modifc.h"
+#include "ui_gclinet.h"
+#include <QMessageBox>
+#include <QRegularExpression>
+#include <QDebug>
+//pour le pdf
 #include <QPdfWriter>
 #include <QPainter>
 #include <QFileDialog>
 #include <QVBoxLayout>
 #include <QListWidget>
 
+
+//satats
+#include <QtCharts/QPieSeries>
+#include <QtCharts/QChartView>
+#include <QtCharts/QBarSet>
+#include <QtCharts/QBarSeries>
+#include <QtCharts/QBarCategoryAxis>
+#include <QtCharts/QValueAxis>
+
+//pour mail
+
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+
+
 Gclinet::Gclinet(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::Gclinet)
-    , trayIcon(new QSystemTrayIcon(this)) // Initialisation
-
-
-{
+    : QMainWindow(parent), ui(new Ui::Gclinet), trayIcon(new QSystemTrayIcon(this)) {
 
     ui->setupUi(this);
-    qDebug() << "UI setup completed!";
+    trayIcon->setIcon(QIcon(":/res/11.jpg"));
+    trayIcon->show();
 
-    if (!ui) {
-        qDebug() << "Erreur : ui n'a pas été alloué correctement.";
-    }
-    if (!parent) {
-        qDebug() << "Attention : parent est nul.";
-    }
-
-    trayIcon->setIcon(QIcon(":/res/11.jpg")); // Icône personnalisée
-    trayIcon->show(); // Affiche l'icône dans la barre système
+    //affichage stats
+    connect(ui->buttonStatistique, &QPushButton::clicked, this, &Gclinet::afficherStatistiquesCompletes);
 
 
-
-     // Connexion du signal du combobox au slot pour le tri
     connect(ui->tri, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Gclinet::onTriChanged);
-
-
     connect(ui->buttonRechercher, &QPushButton::clicked, this, [this]() {
         QString prenom = ui->lineEditPrenom->text();
-        QSqlQueryModel *model = Client.rechercherParPrenom(prenom);
-        ui->tableView->setModel(model);
+        ui->tableView->setModel(Client.rechercherParPrenom(prenom));
     });
+    connect(ui->tableView, &QTableView::clicked, this, &Gclinet::on_tableView_clicked);
 
     ui->stackedWidget->setCurrentWidget(ui->page);
 
-    // Set placeholder text for search
-    ui->lineEditPrenom->setPlaceholderText("Recherher..."); 
-    // Active les couleurs alternées pour les lignes
+
+
+    ui->lineEditPrenom->setPlaceholderText("Rechercher...");
     ui->tableView->setAlternatingRowColors(true);
-    //initialisation d'affichage
-    ui->tableView->setModel(Client.afficher("ASC")); // Tri par défaut croissant
+    ui->tableView->setModel(Client.afficher("ASC"));
 
-
+    ui->buttonModifier->setVisible(false);
+    ui->buttonSupprimer->setVisible(false);
+    ui->buttonAnnuler->setVisible(false);
 }
 
-Gclinet::~Gclinet()
-{
-    delete trayIcon;  // Libérer la mémoire
+
+Gclinet::~Gclinet() {
+    delete trayIcon;
     delete ui;
 }
 
-void Gclinet::showNotification(QString message, QString titre, QSystemTrayIcon::MessageIcon icon)
-{
-    trayIcon->showMessage(titre, message, icon, 3000); // Notification pendant 3 secondes
+
+
+
+
+//stats
+
+void Gclinet::afficherStatistiquesCompletes() {
+    QSqlQuery query;
+
+    QPieSeries *pieSeries = new QPieSeries();
+    query.prepare("SELECT prenom, nb_projet FROM client");
+    if (!query.exec()) {
+        QMessageBox::critical(this, "Erreur", "Erreur lors de la récupération des données.");
+        return;
+    }
+
+    // Données pour camembert + barres
+    QBarSet *barSet = new QBarSet("Nombre de projets");
+    QStringList categories;
+
+    int totalProjets = 0;
+    QVector<QPair<QString, int>> donnees;
+
+    while (query.next()) {
+        QString prenom = query.value(0).toString();
+        int nb_projet = query.value(1).toInt();
+        totalProjets += nb_projet;
+        donnees.append({prenom, nb_projet});
+
+        *barSet << nb_projet;
+        categories << prenom;
+    }
+
+    // Ajouter les parts avec pourcentage
+    for (const auto &d : donnees) {
+        double pourcentage = (double(d.second) / totalProjets) * 100.0;
+        QPieSlice *slice = pieSeries->append(
+            QString("%1 (%2%)").arg(d.first).arg(QString::number(pourcentage, 'f', 1)),
+            d.second
+            );
+        slice->setLabelVisible(true); // rendre visible sur le cercle
+    }
+
+    // Camembert
+    QChart *pieChart = new QChart();
+    pieChart->addSeries(pieSeries);
+    pieChart->setTitle("Répartition des projets (camembert)");
+
+    QChartView *pieChartView = new QChartView(pieChart);
+    pieChartView->setRenderHint(QPainter::Antialiasing);
+
+    // -------- Barres --------
+    QBarSeries *barSeries = new QBarSeries();
+    barSeries->append(barSet);
+
+    QChart *barChart = new QChart();
+    barChart->addSeries(barSeries);
+    barChart->setTitle("Nombre de projets par client (barres)");
+
+    QBarCategoryAxis *axisX = new QBarCategoryAxis();
+    axisX->append(categories);
+    barChart->addAxis(axisX, Qt::AlignBottom);
+    barSeries->attachAxis(axisX);
+
+    QValueAxis *axisY = new QValueAxis();
+    axisY->setTitleText("Projets");
+    barChart->addAxis(axisY, Qt::AlignLeft);
+    barSeries->attachAxis(axisY);
+
+    QChartView *barChartView = new QChartView(barChart);
+    barChartView->setRenderHint(QPainter::Antialiasing);
+
+    // -------- Fenêtre --------
+    QDialog *dialog = new QDialog(this);
+    dialog->setWindowTitle("Statistiques Complètes");
+
+    QHBoxLayout *layout = new QHBoxLayout(dialog);
+    layout->addWidget(pieChartView);
+    layout->addWidget(barChartView);
+
+    dialog->resize(1200, 500);
+    dialog->exec();
 }
 
-void Gclinet::on_pushButton_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_2);
-
-}
 
 
-void Gclinet::onTriChanged(int index) {
-    QString ordre = (index == 0) ? "ASC" : "DESC"; // 0 = Croissant, 1 = Décroissant
-    ui->tableView->setModel(Client.afficher(ordre)); // Met à jour le QTableView
-}
 
-void Gclinet::on_pushButton_2_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page);
-}
-
-
-void Gclinet::on_validerClient_clicked()
-{
-    // Récupération des informations
-    QString idStr = ui->IDC->text();
+void Gclinet::on_validerClient_clicked() {
+    int id_client = ui->IDC->text().toInt();
     QString nom = ui->nomClient_2->text();
     QString prenom = ui->prenomClient_2->text();
     QString email = ui->emailClient_2->text();
     QString num_tlf = ui->numClient_2->text();
-    int nb_projet = ui->nbcProjet_2->value();  // Récupérer la valeur du QSlider
+    int nb_projet = ui->nbcProjet_2->text().toInt();
 
-    // Vérifier si tous les champs obligatoires sont remplis
-    if (idStr.isEmpty() || nom.isEmpty() || prenom.isEmpty() || email.isEmpty() || num_tlf.isEmpty()) {
-        QMessageBox::warning(this, "Champs vides", "Veuillez remplir tous les champs obligatoires.");
+    if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty() || num_tlf.isEmpty()) {
+        QMessageBox::warning(this, "Champs vides", "Veuillez remplir tous les champs.");
         return;
     }
 
-    // Vérifier si l'ID est un entier valide
-    bool conversionOk;
-    int id_client = idStr.toInt(&conversionOk);
-    if (!conversionOk) {
-        QMessageBox::warning(this, "ID invalide", "L'ID doit être un nombre entier.");
-        return;
-    }
-
-    // Vérifier si l'ID existe déjà dans la base de données
-    QSqlQuery query;
-    query.prepare("SELECT COUNT(*) FROM Client WHERE id_client = :id_client");
-    query.bindValue(":id_client", id_client);
-    if (!query.exec()) {
-        QMessageBox::critical(this, "Erreur", "Erreur lors de la vérification de l'ID.");
-        return;
-    }
-    query.next();
-    if (query.value(0).toInt() > 0) {
-        QMessageBox::warning(this, "ID déjà existant", "L'ID du client existe déjà. Veuillez en choisir un autre.");
-        return;
-    }
-
-    // Vérifier la validité de l'adresse email
     QRegularExpression emailRegex(R"(^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$)");
     if (!emailRegex.match(email).hasMatch()) {
         QMessageBox::warning(this, "Email invalide", "Veuillez entrer une adresse email valide.");
         return;
     }
 
-    // Vérifier que le numéro de téléphone contient uniquement des chiffres et a une longueur correcte (8 à 10 chiffres)
     QRegularExpression phoneRegex(R"(^\d{8,10}$)");
     if (!phoneRegex.match(num_tlf).hasMatch()) {
-        QMessageBox::warning(this, "Numéro invalide", "Le numéro de téléphone doit contenir entre 8 et 10 chiffres.");
+        QMessageBox::warning(this, "Numéro invalide", "Numéro de téléphone incorrect.");
         return;
     }
 
-    // Création de l'objet client
-    ClientManager CL(id_client, nom, prenom, email, num_tlf, nb_projet);
-
-    // Ajout du client
-    bool test = CL.ajouter();
-
-    if (test) {
-        // Rafraîchir l'affichage
+    ClientManager cl(id_client, nom, prenom, email, num_tlf, nb_projet);
+    if (cl.ajouter()) {
         ui->tableView->setModel(Client.afficher());
-
-        QMessageBox::information(this, "Succès", "Ajout effectué avec succès !");
+        QMessageBox::information(this, "Succès", "Client ajouté avec succès.");
     } else {
         QMessageBox::critical(this, "Erreur", "Échec de l'ajout du client.");
     }
 }
 
+void Gclinet::onTriChanged() {
+    bool asc = (ui->tri->currentIndex() == 0);
+    ui->tableView->setModel(Client.trierParNbProjet(asc));
+}
 
+void Gclinet::on_tableView_clicked(const QModelIndex &index) {
+    remplirChampsDepuisIndex(index);
+    currentSelectedId = ui->IDC->text().toInt();
+    ui->buttonModifier->setVisible(true);
+    ui->buttonSupprimer->setVisible(true);
+    ui->buttonAnnuler->setVisible(true);
 
+    lastNom = ui->nomClient_2->text();
+    lastPrenom = ui->prenomClient_2->text();
+    lastEmail = ui->emailClient_2->text();
+    lastNumTlf = ui->numClient_2->text();
+    lastNbProjet = ui->nbcProjet_2->text().toInt();
+}
 
-void Gclinet::on_anuulerClient_clicked()
-{
-    //QMessageBox::warning(this,"information","cette action va annuler l'ajout de ce clinet" );
-    showNotification("Ajout effectué avec succès", "Succès", QSystemTrayIcon::Information);
+void Gclinet::remplirChampsDepuisIndex(const QModelIndex &index) {
+    QAbstractItemModel *model = ui->tableView->model();
+    ui->IDC->setText(model->index(index.row(), 0).data().toString());
+    ui->nomClient_2->setText(model->index(index.row(), 1).data().toString());
+    ui->prenomClient_2->setText(model->index(index.row(), 2).data().toString());
+    ui->emailClient_2->setText(model->index(index.row(), 3).data().toString());
+    ui->numClient_2->setText(model->index(index.row(), 4).data().toString());
+    ui->nbcProjet_2->setText(model->index(index.row(), 5).data().toString());
+}
 
+bool Gclinet::hasModifications() const {
+    return lastNom != ui->nomClient_2->text() ||
+           lastPrenom != ui->prenomClient_2->text() ||
+           lastEmail != ui->emailClient_2->text() ||
+           lastNumTlf != ui->numClient_2->text() ||
+           lastNbProjet != ui->nbcProjet_2->text().toInt();
 }
 
 
 
-void Gclinet::on_suppclient_clicked()
-{
+void Gclinet::on_buttonModifier_clicked() {
+    if (!hasModifications()) {
+        QMessageBox::information(this, "Aucune modification", "Aucune modification détectée.");
+        return;
+    }
 
-    supp *suppWindow = new supp(this); // Création avec this pour gestion mémoire automatique
-    connect(suppWindow, &supp::suppressionEffectuee, this, [=]() {
-        ui->tableView->setModel(Client.afficher("ASC")); // Mise à jour du tableView
-    });
-    suppWindow->setModal(true);
-    suppWindow->exec();
-    delete suppWindow; // Libération mémoire après fermeture
+    // Ensure the fields are not empty
+    QString nom = ui->nomClient_2->text();
+    QString prenom = ui->prenomClient_2->text();
+    QString email = ui->emailClient_2->text();
+    QString num_tlf = ui->numClient_2->text();
+    int nb_projet = ui->nbcProjet_2->text().toInt();
 
+    if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty() || num_tlf.isEmpty()) {
+        QMessageBox::warning(this, "Champs vides", "Veuillez remplir tous les champs.");
+        return;
+    }
+
+    // Check if email is valid
+    QRegularExpression emailRegex(R"(^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$)");
+    if (!emailRegex.match(email).hasMatch()) {
+        QMessageBox::warning(this, "Email invalide", "Veuillez entrer une adresse email valide.");
+        return;
+    }
+
+    // Check if phone number is valid
+    QRegularExpression phoneRegex(R"(^\d{8,10}$)");
+    if (!phoneRegex.match(num_tlf).hasMatch()) {
+        QMessageBox::warning(this, "Numéro invalide", "Numéro de téléphone incorrect.");
+        return;
+    }
+
+    // Proceed to modify client
+    ClientManager cl(currentSelectedId, nom, prenom, email, num_tlf, nb_projet);
+    if (cl.modifier()) {
+        ui->tableView->setModel(Client.afficher());
+        QMessageBox::information(this, "Succès", "Client modifié avec succès.");
+    } else {
+        QMessageBox::critical(this, "Erreur", "Échec de la modification.");
+    }
 }
 
 
-void Gclinet::on_modifierClient_clicked()
-{
-    modifc *modifcWindow = new modifc(this); // Création avec this pour gestion mémoire automatique
-    connect(modifcWindow, &modifc::modificationEffectuee, this, [=]() {
-        ui->tableView->setModel(Client.afficher("ASC")); // Mise à jour du tableView
-    });
-    modifcWindow->setModal(true);
-    modifcWindow->exec();
-    delete modifcWindow; // Libération mémoire après fermeture
+
+void Gclinet::on_buttonSupprimer_clicked() {
+    if (currentSelectedId == -1) {
+        QMessageBox::warning(this, "Sélection nécessaire", "Veuillez sélectionner un client à supprimer.");
+        return;
+    }
+
+    // Confirm deletion
+    if (QMessageBox::question(this, "Confirmation", "Voulez-vous vraiment supprimer ce client ?") == QMessageBox::Yes) {
+        if (Client.supprimer(currentSelectedId)) {
+            ui->tableView->setModel(Client.afficher());
+            QMessageBox::information(this, "Succès", "Client supprimé.");
+        } else {
+            QMessageBox::critical(this, "Erreur", "Échec de la suppression.");
+        }
+    }
 }
 
+
+void Gclinet::on_buttonAnnuler_clicked() {
+    ui->IDC->clear();
+    ui->nomClient_2->clear();
+    ui->prenomClient_2->clear();
+    ui->emailClient_2->clear();
+    ui->numClient_2->clear();
+    ui->nbcProjet_2->clear();
+    currentSelectedId = -1;
+
+    ui->buttonModifier->setVisible(false);
+    ui->buttonSupprimer->setVisible(false);
+    ui->buttonAnnuler->setVisible(false);
+}
+
+
+//pdf
 
 void Gclinet::on_exportPdfButton_clicked()
 {
@@ -357,6 +474,91 @@ void Gclinet::on_exportPdfButton_clicked()
 }
 
 
+void Gclinet::on_pushButton_envoyerMail_clicked() {
+    QSqlQuery query;
+    query.prepare(R"(
+        SELECT c.NOM, c.PRENOM, c.EMAIL, p.NOM_PROJET
+        FROM CLIENT c
+        JOIN PROJET p ON c.ID_CLIENT = p.ID_CLIENT
+        WHERE p.STATUT = 'terminee'
+    )");
+
+    if (!query.exec()) {
+        QMessageBox::critical(this, "Erreur SQL", query.lastError().text());
+        return;
+    }
+
+    bool emailsEnvoyes = false;
+    while (query.next()) {
+        QString nom = query.value(0).toString();
+        QString prenom = query.value(1).toString();
+        QString email = query.value(2).toString();
+        QString nomProjet = query.value(3).toString();
+
+        // Appel de la fonction pour envoyer l'email
+        envoyerEmail(nom, prenom, email, nomProjet);
+        emailsEnvoyes = true;
+    }
+
+    if (emailsEnvoyes) {
+        QMessageBox::information(this, "Fait", "Les emails ont été envoyés aux clients concernés.");
+    } else {
+        QMessageBox::information(this, "Aucun projet terminé", "Aucun client n'a de projet terminé.");
+    }
+}
+
+void Gclinet::envoyerEmail(const QString& nom, const QString& prenom, const QString& email, const QString& nomProjet) {
+
+    QString fromEmail = "aminzomita56@gmail.com";  // L'email validé chez SendGrid
+
+    QNetworkAccessManager* manager = new QNetworkAccessManager(this);
+    QUrl url("https://api.sendgrid.com/v3/mail/send");
+    QNetworkRequest request(url);
+
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    request.setRawHeader("Authorization", "Bearer " + apiKey.toUtf8());
+
+    // Construction du JSON
+    QJsonObject json;
+    QJsonObject from;
+    from["email"] = fromEmail;
+    from["name"] = "Gestion Client";
+    json["from"] = from;
+
+    QJsonArray personalizations;
+    QJsonObject personalization;
+    QJsonArray to;
+    QJsonObject toEmail;
+    toEmail["email"] = email;
+    toEmail["name"] = nom + " " + prenom;
+    to.append(toEmail);
+    personalization["to"] = to;
+    personalization["subject"] = "Validation de votre projet terminé !";
+    personalizations.append(personalization);
+    json["personalizations"] = personalizations;
+
+    QJsonObject content;
+    content["type"] = "text/plain";
+    content["value"] = "aslemma ya hmema " + prenom + ",\n\nVotre projet \"" + nomProjet + "\" est maintenant terminé.\naychek ala thi9a teek.\n\nyaatk **** ,\nL’équipe Gestion Client ely dima lehya bik";
+    QJsonArray contents;
+    contents.append(content);
+    json["content"] = contents;
+
+    QJsonDocument doc(json);
+
+    // Envoi de la requête
+    QNetworkReply* reply = manager->post(request, doc.toJson());
+
+    // Traitement de la réponse
+    connect(reply, &QNetworkReply::finished, this, [reply, nom, prenom, email]() {
+        if (reply->error() == QNetworkReply::NoError) {
+            qDebug() << "[SUCCÈS] Email envoyé à" << nom << prenom << "(" << email << ")";
+        } else {
+            qDebug() << "[ÉCHEC] Erreur lors de l'envoi à" << nom << prenom << ":" << reply->errorString();
+        }
+        reply->deleteLater();
+    });
+}
 
 
 

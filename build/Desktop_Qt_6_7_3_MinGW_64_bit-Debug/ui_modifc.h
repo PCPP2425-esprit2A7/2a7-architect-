@@ -17,7 +17,6 @@
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QSlider>
 
 QT_BEGIN_NAMESPACE
 
@@ -34,11 +33,11 @@ public:
     QLineEdit *prenomClient_2;
     QLineEdit *emailClient_2;
     QLineEdit *numClient_2;
-    QSlider *nbcProjet_2;
     QLabel *label_8;
     QLabel *label_7;
     QLineEdit *IDC;
     QDialogButtonBox *buttonBox;
+    QLineEdit *nbcProjet_3;
 
     void setupUi(QDialog *modifc)
     {
@@ -131,10 +130,6 @@ public:
 "font-size: 12px;\n"
 "font-weight: bold;\n"
 ""));
-        nbcProjet_2 = new QSlider(groupBox);
-        nbcProjet_2->setObjectName("nbcProjet_2");
-        nbcProjet_2->setGeometry(QRect(50, 420, 160, 22));
-        nbcProjet_2->setOrientation(Qt::Orientation::Horizontal);
         label_8 = new QLabel(groupBox);
         label_8->setObjectName("label_8");
         label_8->setGeometry(QRect(240, 10, 81, 51));
@@ -172,6 +167,17 @@ public:
 ""));
         buttonBox->setOrientation(Qt::Orientation::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok);
+        nbcProjet_3 = new QLineEdit(groupBox);
+        nbcProjet_3->setObjectName("nbcProjet_3");
+        nbcProjet_3->setGeometry(QRect(50, 410, 171, 31));
+        nbcProjet_3->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+"border-radius: 8px;\n"
+"padding: 8px 16px;\n"
+"font-size: 12px;\n"
+"font-weight: bold;\n"
+""));
 
         retranslateUi(modifc);
         QObject::connect(buttonBox, &QDialogButtonBox::accepted, modifc, qOverload<>(&QDialog::accept));
