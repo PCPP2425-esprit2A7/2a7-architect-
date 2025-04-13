@@ -466,7 +466,7 @@ QPushButton:pressed {
   <widget class="QTableWidget" name="tableView">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>540</x>
      <y>140</y>
      <width>651</width>
      <height>471</height>
@@ -475,45 +475,75 @@ QPushButton:pressed {
    <property name="styleSheet">
     <string notr="true">/* Style de base pour le tableau */
 #tableView {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    alternate-background-color: #f8f9fa;
-    gridline-color: #e0e0e0;
-    font-family: &quot;Segoe UI&quot;, Arial;
-    font-size: 12px;
+ background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    alternate-background-color: #f8fafc;
+    gridline-color: #e2e8f0;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    font-size: 14px;  /* Taille de police augmentée */
+    padding: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 /* Style des cellules */
 #tableView::item {
-    padding: 8px;
+   padding: 8px;
     border-bottom: 1px solid #f0f0f0;
 }
 
-/* Style des en-têtes */
+/* En-têtes avec couleur ARCHITOPIA */
 #tableView QHeaderView::section {
-    background-color: #495057;
+    background-color: #15767f;  /* Couleur bleu-vert comme la navbar */
     color: white;
-    padding: 8px;
+    padding: 14px 16px;  /* Espacement augmenté */
     border: none;
+    font-weight: 600;
+    font-size: 15px;  /* Taille de police augmentée */
+    border-radius: 8px;
+    margin: 2px;
+}
+
+/* Sélection stylisée */
+#tableView::item:selected {
+    background-color: #e6fffa;
+    color: #234e52;
     font-weight: 500;
 }
 
-/* Style de sélection */
-#tableView::item:selected {
-    background-color: #e2f0fd;
-    color: #212529;
-}
-
-/* Style des barres de défilement */
+/* Barres de défilement */
 #tableView QScrollBar:vertical {
-    width: 8px;
-    background: transparent;
+    width: 10px;
+    background: #f0fdfa;
+    border-radius: 5px;
 }
 
 #tableView QScrollBar::handle:vertical {
-    background: #adb5bd;
-    border-radius: 4px;
+    background: #15767f;  /* Couleur ARCHITOPIA */
+    border-radius: 5px;
+    min-height: 3px;
+}
+
+/* Effets de survol */
+#tableView::item:hover {
+    background-color: #f0fdf4;
+    transition: background-color 0.2s ease;
+}
+
+/* Style alterné des lignes */
+#tableView::item:alternate {
+    background-color: #f7fafc;
+}
+
+/* Coins arrondis */
+QHeaderView {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+QTableView {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
 }</string>
    </property>
   </widget>

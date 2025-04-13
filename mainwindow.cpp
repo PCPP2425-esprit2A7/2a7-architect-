@@ -37,9 +37,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEdit_4->setPlaceholderText("Rechercher...");
 
     // Connectez le signal de notification dès l'initialisation
-    connect(this, &MainWindow::nouvelleFormationAjoutee,
-            m_dashbord, &dashbord::ajouterNotification);
-
+    connect(this, &MainWindow::nouvelleFormationAjoutee, m_dashbord, &dashbord::ajouterNotification);
     // Connectez les autres signaux comme avant
     connect(ui->afficherStatistiques, &QPushButton::clicked,
             this, &MainWindow::afficherStatistiques);

@@ -18,7 +18,7 @@ public:
     void chargerNotifications();
 public slots:
     void ajouterNotification(const QString& message);
-
+     void showNewFormationsNotification();
 private:
     Ui::dashbord *ui;
     QString fichierNotifications = "notifications.json"; // Fichier de sauvegarde

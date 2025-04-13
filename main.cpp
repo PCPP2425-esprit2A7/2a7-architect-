@@ -13,18 +13,24 @@ int main(int argc, char *argv[])
 
     if (c.ouvrirConnexion()) {
         qDebug() << "Connexion à abdallah_connction réussie.";
-        // Affichage de l'interface utilisateur après une connexion réussie
-        //w.show();
     } else {
         qDebug() << "Échec de la connexion à amin_connction.";
-        return -1;  // Arrête l'application si la connexion échoue
+        return -1;
     }
 
-    // Ce code est exécuté après l'affichage de l'interface utilisateur
     qDebug() << "Pilotes disponibles :" << QSqlDatabase::drivers();
+
+    // Créer les fenêtres
     MainWindow w;
-    w.show();
+    dashbord dashboard(&w); // Passer MainWindow comme parent
 
+    // Connecter le signal returnRequested du tableau de bord pour afficher MainWindow
+    QObject::connect(&dashboard, &dashbord::returnRequested, [&w]() {
+        w.show();
+    });
 
-    return a.exec();  // Démarre la boucle d'événements Qt
+    // Afficher le tableau de bord en premier
+    dashboard.show();
+
+    return a.exec();
 }

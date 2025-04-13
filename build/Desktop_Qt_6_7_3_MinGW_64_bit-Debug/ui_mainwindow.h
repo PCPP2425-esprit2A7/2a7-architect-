@@ -85,6 +85,7 @@ public:
     QPushButton *btnSupprimer;
     QTableView *tableView;
     QPushButton *maps;
+    QLabel *label_23;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -627,12 +628,12 @@ public:
 ""));
         label_18 = new QLabel(centralwidget);
         label_18->setObjectName("label_18");
-        label_18->setGeometry(QRect(1100, 30, 31, 31));
+        label_18->setGeometry(QRect(1150, 20, 41, 41));
         label_18->setStyleSheet(QString::fromUtf8("image: url(:/res/66.png);\n"
 "image: url(:/res/55.png);"));
         label_19 = new QLabel(centralwidget);
         label_19->setObjectName("label_19");
-        label_19->setGeometry(QRect(690, 20, 51, 41));
+        label_19->setGeometry(QRect(610, 20, 51, 41));
         label_19->setStyleSheet(QString::fromUtf8("image: url(:/res/3309927.png);"));
         label_20 = new QLabel(centralwidget);
         label_20->setObjectName("label_20");
@@ -693,7 +694,7 @@ public:
 ""));
         btnPdf = new QPushButton(centralwidget);
         btnPdf->setObjectName("btnPdf");
-        btnPdf->setGeometry(QRect(1180, 20, 91, 31));
+        btnPdf->setGeometry(QRect(1210, 20, 91, 41));
         btnPdf->setStyleSheet(QString::fromUtf8("#btnPdf {\n"
 "   background-color: rgb(21, 118, 127);\n"
 "    color: white;\n"
@@ -816,7 +817,7 @@ public:
         label_22->setStyleSheet(QString::fromUtf8("image: url(:/res/777.png);"));
         afficherStatistiques = new QPushButton(centralwidget);
         afficherStatistiques->setObjectName("afficherStatistiques");
-        afficherStatistiques->setGeometry(QRect(790, 20, 131, 31));
+        afficherStatistiques->setGeometry(QRect(670, 20, 131, 41));
         afficherStatistiques->setStyleSheet(QString::fromUtf8("#afficherStatistiques {\n"
 "   background-color: rgb(21, 118, 127);\n"
 "    color: white;\n"
@@ -914,7 +915,7 @@ public:
 ""));
         btnAjouter_3 = new QPushButton(centralwidget);
         btnAjouter_3->setObjectName("btnAjouter_3");
-        btnAjouter_3->setGeometry(QRect(1320, 600, 131, 31));
+        btnAjouter_3->setGeometry(QRect(1320, 600, 131, 41));
         btnAjouter_3->setStyleSheet(QString::fromUtf8("#btnAjouter_3 {\n"
 "   background-color: rgb(21, 118, 127);\n"
 "    color: white;\n"
@@ -963,7 +964,7 @@ public:
 ""));
         btnSupprimer = new QPushButton(centralwidget);
         btnSupprimer->setObjectName("btnSupprimer");
-        btnSupprimer->setGeometry(QRect(1170, 600, 131, 31));
+        btnSupprimer->setGeometry(QRect(1170, 600, 141, 41));
         btnSupprimer->setStyleSheet(QString::fromUtf8("#btnSupprimer {\n"
 "   background-color: rgb(21, 118, 127);\n"
 "    color: white;\n"
@@ -1053,7 +1054,7 @@ public:
 "}"));
         maps = new QPushButton(centralwidget);
         maps->setObjectName("maps");
-        maps->setGeometry(QRect(1010, 20, 91, 31));
+        maps->setGeometry(QRect(950, 20, 91, 41));
         maps->setStyleSheet(QString::fromUtf8("#maps {\n"
 "   background-color: rgb(21, 118, 127);\n"
 "    color: white;\n"
@@ -1100,6 +1101,10 @@ public:
 "    border: 2px solid #166735;\n"
 "}\n"
 ""));
+        label_23 = new QLabel(centralwidget);
+        label_23->setObjectName("label_23");
+        label_23->setGeometry(QRect(890, 20, 41, 41));
+        label_23->setStyleSheet(QString::fromUtf8("image: url(:/res/maps.png);"));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -1156,7 +1161,8 @@ public:
         btnAjouter_2->setText(QCoreApplication::translate("MainWindow", "Se D\303\251connecter", nullptr));
         btnAjouter_3->setText(QCoreApplication::translate("MainWindow", "Modifier", nullptr));
         btnSupprimer->setText(QCoreApplication::translate("MainWindow", "Supprimer", nullptr));
-        maps->setText(QCoreApplication::translate("MainWindow", "maps", nullptr));
+        maps->setText(QCoreApplication::translate("MainWindow", "Maps", nullptr));
+        label_23->setText(QString());
     } // retranslateUi
 
 };

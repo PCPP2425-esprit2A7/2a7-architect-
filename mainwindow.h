@@ -9,6 +9,7 @@
 #include "ui_dashbord.h"
 #include "dashbord.h"
 #include "map.h"
+#include "smsservice.h"
 using namespace std;
 
 QT_BEGIN_NAMESPACE
@@ -53,6 +54,7 @@ private:
     dashbord *m_dashbord = nullptr;
     void highlightNewRow(int id);
     QStringList m_pendingNotifications;
+
 signals:
  void nouvelleFormationAjoutee(const QString &message); // Déjà présent
 };

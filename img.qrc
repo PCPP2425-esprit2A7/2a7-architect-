@@ -23,6 +23,7 @@
         <file>989.png</file>
         <file>777.png</file>
         <file>55.png</file>
+        <file>maps.png</file>
     </qresource>
     <qresource prefix="/">
         <file>777.png</file>
