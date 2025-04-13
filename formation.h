@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <QSqlQuery>
+#include <QGeoCoordinate>
 #include <QSqlQueryModel>
 #include <QPdfWriter>
 #include <QPainter>
@@ -19,7 +20,7 @@ private:
     string formateur;      // Nom du formateur
     string lieu;           // Lieu de la formation
     double prix;           // Prix de la formation
-
+    QGeoCoordinate coordinate;
 public:
     // Constructeurs
     Formation();  // Constructeur par défaut
@@ -51,6 +52,9 @@ public:
     QSqlQueryModel* trierParPrix();  // Trier les formations par prix
     QSqlQueryModel* trierParDate();  // Trier les formations par date
     QSqlQueryModel* rechercherParLieu(const QString& lieu);
+    void setCoordinate(double latitude, double longitude);
+    QGeoCoordinate getCoordinate() const;
+    static QList<QPair<QString, QGeoCoordinate>> getAllCoordinates();
 };
 
 #endif // FORMATION_H

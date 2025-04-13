@@ -7,6 +7,8 @@
 #include <QSqlQuery>
 #include <QSqlDatabase>
 #include "ui_dashbord.h"
+#include "dashbord.h"
+#include "map.h"
 using namespace std;
 
 QT_BEGIN_NAMESPACE
@@ -22,7 +24,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    const QStringList& pendingNotifications() const { return m_pendingNotifications; }
+    void clearPendingNotifications() { m_pendingNotifications.clear(); }
 private slots:
     void on_btnAjouter_clicked();
     void on_btnSupprimer_clicked();
@@ -32,7 +35,12 @@ private slots:
     void on_lineEdit_4_textChanged(const QString &arg1);
     void afficherStatistiques(); // Ajout de la déclaration du slot
 
+
+
+    void on_maps_clicked();
+
     void on_pushButton_6_clicked();
+    void onMapLocationSelected(const QGeoCoordinate &coord);
 
 private:
     Ui::MainWindow *ui;
@@ -41,11 +49,12 @@ private:
     void trierParDate();  // Méthode pour trier par date
     QWidget *dashboardWidget;  // Pointeur vers le dashboard
     Ui::dashbord dashboardUi;  // Interface du dashboard
-
+    Map *mapWidget;
+    dashbord *m_dashbord = nullptr;
     void highlightNewRow(int id);
+    QStringList m_pendingNotifications;
 signals:
-    void nouvelleFormationAjoutee(QString formateur, QString lieu, QDate date);
-
+ void nouvelleFormationAjoutee(const QString &message); // Déjà présent
 };
 
 #endif // MAINWINDOW_H

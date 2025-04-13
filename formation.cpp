@@ -1,5 +1,6 @@
 #include "formation.h"
 #include <QSqlQuery>
+#include <QGeoCoordinate>
 #include <QSqlQueryModel>
 #include <QDebug>  // Pour le débogage
 #include <QSqlError>  // Pour gérer les erreurs SQL
@@ -178,4 +179,60 @@ QSqlQueryModel* Formation::rechercherParLieu(const QString& lieu) {
     query.exec();
     model->setQuery(query);
     return model;
+}
+
+QGeoCoordinate Formation::getCoordinate() const {
+    return coordinate;
+}
+
+
+void Formation::setCoordinate(double latitude, double longitude) {
+    coordinate = QGeoCoordinate(latitude, longitude);
+    lieu = std::to_string(latitude) + ", " + std::to_string(longitude);
+}
+
+QList<QPair<QString, QGeoCoordinate>> Formation::getAllCoordinates() {
+    QList<QPair<QString, QGeoCoordinate>> coordinates;
+    QSqlQuery query;
+    query.prepare("SELECT ID_FORMATION, LIEU FROM \"ABDALLAH\".\"FORMATION\"");
+
+    if (query.exec()) {
+        while (query.next()) {
+            int id = query.value(0).toInt();
+            QString lieu = query.value(1).toString();
+            QString name = "Formation " + QString::number(id);
+
+            // Improved coordinate parsing with more robust checks
+            QStringList parts = lieu.split(",");
+            if (parts.size() == 2) {
+                bool ok1, ok2;
+                double lat = parts[0].trimmed().toDouble(&ok1);
+                double lon = parts[1].trimmed().toDouble(&ok2);
+
+                if (ok1 && ok2 && lat >= -90 && lat <= 90 && lon >= -180 && lon <= 180) {
+                    coordinates.append(qMakePair(name, QGeoCoordinate(lat, lon)));
+                    qDebug() << "Valid coordinates for ID" << id << ":" << lat << lon;
+                } else {
+                    qDebug() << "Invalid coordinates format for ID" << id << ":" << lieu;
+                }
+            } else {
+                qDebug() << "Invalid lieu format for ID" << id << ":" << lieu;
+            }
+        }
+    } else {
+        qDebug() << "Error fetching coordinates:" << query.lastError().text();
+    }
+
+    return coordinates;
+}
+// Dans formation.cpp
+int Formation::getId() const {
+    return id;
+}
+
+string Formation::getFormateur() const {
+    return formateur;
+}
+string Formation::getLieu() const {
+    return lieu;
 }

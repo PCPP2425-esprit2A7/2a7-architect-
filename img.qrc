@@ -26,5 +26,6 @@
     </qresource>
     <qresource prefix="/">
         <file>777.png</file>
+        <file>map.qml</file>
     </qresource>
 </RCC>

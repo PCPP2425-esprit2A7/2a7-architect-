@@ -24,23 +24,34 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 #include <QSqlDatabase>
+#include "dashbord.h"
+#include "ui_dashbord.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , m_dashbord(new dashbord(this))  // Initialisation directe
+
 {
     ui->setupUi(this);
     ui->tableView->setModel(fr.afficherListe());
     ui->lineEdit_4->setPlaceholderText("Rechercher...");
 
-    // Ajoutez cette connexion (remplacez "btnStats" par le nom réel de votre bouton)
-    connect(ui->afficherStatistiques, &QPushButton::clicked, this, &MainWindow::afficherStatistiques);
+    // Connectez le signal de notification dès l'initialisation
+    connect(this, &MainWindow::nouvelleFormationAjoutee,
+            m_dashbord, &dashbord::ajouterNotification);
 
-    connect(ui->btnPdf, &QPushButton::clicked, this, &MainWindow::on_btnPdf_clicked);
-
+    // Connectez les autres signaux comme avant
+    connect(ui->afficherStatistiques, &QPushButton::clicked,
+            this, &MainWindow::afficherStatistiques);
+    connect(ui->btnPdf, &QPushButton::clicked,
+            this, &MainWindow::on_btnPdf_clicked);
+    connect(ui->pushButton_6, &QPushButton::clicked,
+            this, &MainWindow::on_pushButton_6_clicked);
 }
 MainWindow::~MainWindow()
 {
     delete ui;
+
 }
 
 
@@ -100,10 +111,10 @@ void MainWindow::on_btnAjouter_clicked() {
     }
 
     // Contrôle de saisie pour le lieu (uniquement des lettres et des espaces)
-    if (!textRegex.match(lieu).hasMatch()) {
+    /*if (!textRegex.match(lieu).hasMatch()) {
         QMessageBox::warning(this, "Erreur", "Le champ Lieu ne doit contenir que des lettres.");
         return;
-    }
+    }*/
 
     // Contrôle de saisie pour le prix (doit être un nombre décimal positif)
     bool prixOk;
@@ -122,9 +133,30 @@ void MainWindow::on_btnAjouter_clicked() {
 
     // Affichage d'un message de confirmation ou d'erreur en fonction du résultat
     if (test) {
-        // Rafraîchir la table view
         ui->tableView->setModel(fr.afficherListe());
-        QMessageBox::information(this, "OK", "Ajout effectué");
+
+        // Utiliser QMessageBox de manière modale
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("Succès");
+        msgBox.setText("Ajout effectué avec succès");
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.exec(); // Utilisation de exec() au lieu de information()
+        QString notification = QString("Nouvelle formation ajoutée\n"
+                                       "Formateur: %1\n"
+                                       "ID: %2\n"
+                                       "Lieu: %3")
+                                   .arg(QString::fromStdString(f.getFormateur()))
+                                   .arg(f.getId())
+                                   .arg(QString::fromStdString(f.getLieu()));
+
+        // Émettez toujours le signal
+        emit nouvelleFormationAjoutee(notification);
+
+        // Réinitialisation
+        ui->lineEdit_id->clear();
+        ui->lineEdit_formateur->clear();
+        ui->lineEdit_lieu->clear();
+        ui->lineEdit_prix->clear();
     } else {
         QMessageBox::critical(this, "Erreur", "Ajout non effectué");
     }
@@ -436,4 +468,45 @@ void MainWindow::afficherStatistiques() {
     layout->addWidget(barView);
     statsWindow->resize(1200, 600);
     statsWindow->show();
+}
+
+
+
+
+
+
+
+
+
+
+/*void MainWindow::onMapClicked(double latitude, double longitude)
+{
+    // Update the address field with coordinates
+    QString coordinates = QString("%1, %2").arg(latitude).arg(longitude);
+    ui->lineEdit_lieu->setText(coordinates);
+
+    // You might want to update the current centre's coordinate
+    fr.setCoordinate(latitude, longitude);
+}
+*/
+void MainWindow::on_maps_clicked()
+{
+    Map mapDialog(this);
+    connect(&mapDialog, &Map::locationSelected, this, &MainWindow::onMapLocationSelected);
+    mapDialog.setupMap();
+    mapDialog.loadFormationsToMap();
+    mapDialog.exec();
+}
+
+void MainWindow::onMapLocationSelected(const QGeoCoordinate &coord)
+{
+    QString location = QString("%1, %2").arg(coord.latitude()).arg(coord.longitude());
+    ui->lineEdit_lieu->setText(location);
+
+    // Also store the coordinate in the Formation object if needed
+    fr.setCoordinate(coord.latitude(), coord.longitude());
+}
+void MainWindow::on_pushButton_6_clicked() {
+    m_dashbord->show();
+    this->hide();
 }

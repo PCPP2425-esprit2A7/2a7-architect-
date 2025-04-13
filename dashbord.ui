@@ -13,22 +13,6 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>610</x>
-     <y>630</y>
-     <width>341</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Orientation::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -192,7 +176,7 @@ QPushButton:pressed {
     <string>Taches</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="anuule">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -479,50 +463,61 @@ QPushButton:pressed {
     <string/>
    </property>
   </widget>
-  <widget class="QTableWidget" name="notificationTableView">
+  <widget class="QTableWidget" name="tableView">
    <property name="geometry">
     <rect>
      <x>330</x>
      <y>140</y>
-     <width>1141</width>
+     <width>651</width>
      <height>471</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* Style de base pour le tableau */
+#tableView {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    alternate-background-color: #f8f9fa;
+    gridline-color: #e0e0e0;
+    font-family: &quot;Segoe UI&quot;, Arial;
+    font-size: 12px;
+}
+
+/* Style des cellules */
+#tableView::item {
+    padding: 8px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Style des en-têtes */
+#tableView QHeaderView::section {
+    background-color: #495057;
+    color: white;
+    padding: 8px;
+    border: none;
+    font-weight: 500;
+}
+
+/* Style de sélection */
+#tableView::item:selected {
+    background-color: #e2f0fd;
+    color: #212529;
+}
+
+/* Style des barres de défilement */
+#tableView QScrollBar:vertical {
+    width: 8px;
+    background: transparent;
+}
+
+#tableView QScrollBar::handle:vertical {
+    background: #adb5bd;
+    border-radius: 4px;
+}</string>
    </property>
   </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>dashbord</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
-   <receiver>dashbord</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

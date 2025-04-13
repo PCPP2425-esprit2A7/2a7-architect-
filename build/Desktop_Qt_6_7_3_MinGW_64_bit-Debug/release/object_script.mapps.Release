@@ -1,0 +1,15 @@
+release/connexion.o
+release/dashbord.o
+release/formation.o
+release/main.o
+release/mainwindow.o
+release/map.o
+release/modifier.o
+release/supp.o
+release/qrc_img.o
+release/qrc_ressources.o
+release/moc_dashbord.o
+release/moc_mainwindow.o
+release/moc_map.o
+release/moc_modifier.o
+release/moc_supp.o
