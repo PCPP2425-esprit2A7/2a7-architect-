@@ -158,7 +158,7 @@ QPushButton:pressed {
       <enum>Qt::Orientation::Horizontal</enum>
      </property>
     </widget>
-    <widget class="QPushButton" name="stats">
+    <widget class="QPushButton" name="stat">
      <property name="geometry">
       <rect>
        <x>760</x>

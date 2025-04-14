@@ -1,4 +1,4 @@
-QT       += core gui sql widgets
+QT       += core gui sql charts widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,12 +13,14 @@ SOURCES += \
     gestion_projet.cpp \
     main.cpp \
     mainwindow.cpp \
+    ml_predictor.cpp \
     modifier.cpp
 
 HEADERS += \
     connexion.h \
     gestion_projet.h \
     mainwindow.h \
+    ml_predictor.h \
     modifier.h
 
 FORMS += \
