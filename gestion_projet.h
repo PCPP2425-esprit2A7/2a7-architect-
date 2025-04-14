@@ -2,8 +2,13 @@
 #define GESTION_PROJET_H
 
 #include <QString>
+#include <QtSql>
+#include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include <QSqlError>
+#include <QDate>
+#include <QDebug>
 
 class GestionProjet {
 private:

@@ -4,6 +4,7 @@
 #include <QMessageBox>
 #include <QFormLayout>
 #include <QDate>
+#include <QFile>
 
 modifier::modifier(QWidget *parent, int id, QString nom, QString desc, QString statut, QString date_debut, QString date_fin)
     : QDialog(parent)
@@ -11,6 +12,14 @@ modifier::modifier(QWidget *parent, int id, QString nom, QString desc, QString s
     , projectId(id)
 {
     ui->setupUi(this);
+
+    // Chargement du style
+    QFile styleFile("styles/form_style.qss");
+    if (styleFile.open(QFile::ReadOnly)) {
+        QString styleSheet = QLatin1String(styleFile.readAll());
+        setStyleSheet(styleSheet);
+        styleFile.close();
+    }
 
     ui->lineEdit_nom->setText(nom);
     ui->textEdit_description->setPlainText(desc);
@@ -86,11 +95,9 @@ void modifier::on_pushButton_clicked()
         return;
     }
 
-    // Create a GestionProjet object with the new data
-    GestionProjet projet(projectId, nom, desc, statut, date_debut, date_fin);
-
     // Call the modifier() method to update the project in the database
-    if (projet.modifier()) {
+    GestionProjet projet;
+    if (projet.modifier(projectId, nom, desc, statut, date_debut, date_fin)) {
         emit projetModifie();
         QMessageBox::information(this, "Succès", "Projet modifié avec succès.");
         this->close();
