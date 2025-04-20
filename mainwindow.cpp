@@ -45,6 +45,7 @@ MainWindow::MainWindow(QWidget *parent)
             this, &MainWindow::on_btnPdf_clicked);
     connect(ui->pushButton_6, &QPushButton::clicked,
             this, &MainWindow::on_pushButton_6_clicked);
+
 }
 MainWindow::~MainWindow()
 {
