@@ -36,16 +36,22 @@ namespace {
 struct qt_meta_stringdata_CLASSGclinetENDCLASS_t {};
 constexpr auto qt_meta_stringdata_CLASSGclinetENDCLASS = QtMocHelpers::stringData(
     "Gclinet",
-    "on_pushButton_clicked",
-    "",
-    "on_pushButton_2_clicked",
     "on_validerClient_clicked",
-    "on_anuulerClient_clicked",
-    "on_suppclient_clicked",
-    "on_modifierClient_clicked",
-    "on_exportPdfButton_clicked",
+    "",
     "onTriChanged",
-    "index"
+    "on_tableView_clicked",
+    "QModelIndex",
+    "index",
+    "on_buttonModifier_clicked",
+    "on_buttonSupprimer_clicked",
+    "on_buttonAnnuler_clicked",
+    "on_exportPdfButton_clicked",
+    "afficherStatistiquesCompletes",
+    "envoyerEmail",
+    "nom",
+    "prenom",
+    "email",
+    "nomProjet"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -58,7 +64,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSGclinetENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -66,24 +72,26 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSGclinetENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   62,    2, 0x08,    1 /* Private */,
-       3,    0,   63,    2, 0x08,    2 /* Private */,
-       4,    0,   64,    2, 0x08,    3 /* Private */,
-       5,    0,   65,    2, 0x08,    4 /* Private */,
-       6,    0,   66,    2, 0x08,    5 /* Private */,
-       7,    0,   67,    2, 0x08,    6 /* Private */,
-       8,    0,   68,    2, 0x08,    7 /* Private */,
-       9,    1,   69,    2, 0x08,    8 /* Private */,
+       1,    0,   68,    2, 0x08,    1 /* Private */,
+       3,    0,   69,    2, 0x08,    2 /* Private */,
+       4,    1,   70,    2, 0x08,    3 /* Private */,
+       7,    0,   73,    2, 0x08,    5 /* Private */,
+       8,    0,   74,    2, 0x08,    6 /* Private */,
+       9,    0,   75,    2, 0x08,    7 /* Private */,
+      10,    0,   76,    2, 0x08,    8 /* Private */,
+      11,    0,   77,    2, 0x08,    9 /* Private */,
+      12,    4,   78,    2, 0x08,   10 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 5,    6,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString,   13,   14,   15,   16,
 
        0        // eod
 };
@@ -97,23 +105,29 @@ Q_CONSTINIT const QMetaObject Gclinet::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSGclinetENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<Gclinet, std::true_type>,
-        // method 'on_pushButton_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_pushButton_2_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_validerClient_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_anuulerClient_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_suppclient_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_modifierClient_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_exportPdfButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'onTriChanged'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>
+        // method 'on_tableView_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QModelIndex &, std::false_type>,
+        // method 'on_buttonModifier_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_buttonSupprimer_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_buttonAnnuler_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_exportPdfButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'afficherStatistiquesCompletes'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'envoyerEmail'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
     >,
     nullptr
 } };
@@ -124,14 +138,15 @@ void Gclinet::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         auto *_t = static_cast<Gclinet *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->on_pushButton_clicked(); break;
-        case 1: _t->on_pushButton_2_clicked(); break;
-        case 2: _t->on_validerClient_clicked(); break;
-        case 3: _t->on_anuulerClient_clicked(); break;
-        case 4: _t->on_suppclient_clicked(); break;
-        case 5: _t->on_modifierClient_clicked(); break;
+        case 0: _t->on_validerClient_clicked(); break;
+        case 1: _t->onTriChanged(); break;
+        case 2: _t->on_tableView_clicked((*reinterpret_cast< std::add_pointer_t<QModelIndex>>(_a[1]))); break;
+        case 3: _t->on_buttonModifier_clicked(); break;
+        case 4: _t->on_buttonSupprimer_clicked(); break;
+        case 5: _t->on_buttonAnnuler_clicked(); break;
         case 6: _t->on_exportPdfButton_clicked(); break;
-        case 7: _t->onTriChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 7: _t->afficherStatistiquesCompletes(); break;
+        case 8: _t->envoyerEmail((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4]))); break;
         default: ;
         }
     }
@@ -156,13 +171,13 @@ int Gclinet::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 9)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }
