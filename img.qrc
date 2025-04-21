@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/imggg">
+        <file>55.png</file>
+        <file>98.png</file>
+    </qresource>
+</RCC>

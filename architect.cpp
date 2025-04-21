@@ -1,5 +1,9 @@
 #include "architect.h"
 #include <QSqlError>
+#include <QCryptographicHash>
+QString hashString(const QString &input) {
+    return QString(QCryptographicHash::hash(input.toUtf8(), QCryptographicHash::Sha256).toHex());
+}
 
 // Default Constructor
 Architect::Architect() {
@@ -32,9 +36,9 @@ bool Architect::add() {
     query.bindValue(":name", name);
     query.bindValue(":email", email);
     query.bindValue(":role", role);
-    query.bindValue(":password", password);
+    query.bindValue(":password", hashString(password));
     query.bindValue(":securityQuestion", securityQuestion);
-    query.bindValue(":securityAnswer", securityAnswer);
+    query.bindValue(":securityAnswer", hashString(securityAnswer));
 
     if (query.exec()) {
         return true;
@@ -60,9 +64,9 @@ bool Architect::update(int id) {
     query.bindValue(":name", name);
     query.bindValue(":email", email);
     query.bindValue(":role", role);
-    query.bindValue(":password", password);
+    query.bindValue(":password", hashString(password));
     query.bindValue(":securityQuestion", securityQuestion);
-    query.bindValue(":securityAnswer", securityAnswer);
+    query.bindValue(":securityAnswer", hashString(securityAnswer));
 
     if (query.exec()) {
         return true;
