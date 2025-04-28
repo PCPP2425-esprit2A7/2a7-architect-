@@ -1,0 +1,15 @@
+debug/connexion.o
+debug/dashbord.o
+debug/formation.o
+debug/main.o
+debug/mainwindow.o
+debug/map.o
+debug/modifier.o
+debug/supp.o
+debug/qrc_img.o
+debug/qrc_ressources.o
+debug/moc_dashbord.o
+debug/moc_mainwindow.o
+debug/moc_map.o
+debug/moc_modifier.o
+debug/moc_supp.o

@@ -9,7 +9,7 @@
 #include "ui_dashbord.h"
 #include "dashbord.h"
 #include "map.h"
-#include "smsservice.h"
+
 using namespace std;
 
 QT_BEGIN_NAMESPACE
@@ -56,7 +56,7 @@ private:
     QStringList m_pendingNotifications;
 
 signals:
- void nouvelleFormationAjoutee(const QString &message); // Déjà présent
+    void nouvelleFormationAjoutee(const QString &message); // Déjà présent
 };
 
 #endif // MAINWINDOW_H

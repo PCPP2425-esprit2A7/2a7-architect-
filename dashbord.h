@@ -18,11 +18,11 @@ public:
     void chargerNotifications();
 public slots:
     void ajouterNotification(const QString& message);
-     void showNewFormationsNotification();
+    void showNewFormationsNotification();
 private:
     Ui::dashbord *ui;
     QString fichierNotifications = "notifications.json"; // Fichier de sauvegarde
-int m_unsavedCount;
+    int m_unsavedCount;
     QList<QPair<QString, QString>> m_notificationCache; // Cache en mémoire
     QTimer m_saveTimer; // Pour sauvegarde différée
 signals:
